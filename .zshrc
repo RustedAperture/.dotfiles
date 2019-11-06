@@ -1,1 +1,0 @@
-/home/cameron/.zprezto/runcoms/zshrc
