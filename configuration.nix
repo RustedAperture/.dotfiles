@@ -1,10 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   system.autoUpgrade.enable = true;
   system.autoUpgrade.dates = "weekly";
 
@@ -13,10 +15,10 @@
   nix.gc.options = "--delete-older-than 10d";
   nix.settings.auto-optimise-store = true;
 
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -88,15 +90,18 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-  
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.cameron = {
     isNormalUser = true;
     description = "Cameron";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -110,24 +115,26 @@
   programs.git = {
     enable = true;
   };
-  
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     discord
     steam
     lutris
     kdePackages.bluedevil
     nixd
-    nixfmt-rfc-style
+    alejandra
     vscode-fhs
     kdePackages.polkit-kde-agent-1
   ];
+
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -155,5 +162,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }
