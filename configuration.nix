@@ -103,6 +103,7 @@
       kdePackages.kate
       #  thunderbird
     ];
+    shell = pkgs.zsh;
   };
 
   # Enable automatic login for the user.
@@ -113,6 +114,10 @@
   programs.firefox.enable = true;
 
   programs.git = {
+    enable = true;
+  };
+
+  programs.zsh = {
     enable = true;
   };
 
