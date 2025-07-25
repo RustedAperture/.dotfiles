@@ -28,7 +28,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.cameron = ./home.nix;
+          home-manager.users.cameron = import ./home-manager/home.nix;
         }
       ];
       specialArgs = {inherit inputs;};
@@ -36,7 +36,7 @@
 
     homeConfigurations.cameron = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
-      modules = [./home.nix];
+      modules = [./home-manager/home.nix];
     };
   };
 }
