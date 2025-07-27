@@ -8,9 +8,25 @@
     homeDirectory = "/home/cameron";
     stateVersion = "25.05";
     packages = with pkgs; [
+      # KDE Plasma
       kdePackages.kzones
+
+      # Utilies and Tools
       orca-slicer
       kitty
+
+      # Chat
+      discord
+
+      # Gaming
+      steam
+      lutris
+
+      # Coding
+      nixd
+      alejandra
+      vscode
+      sops
     ];
   };
 
