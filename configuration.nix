@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  pkgs-unstable,
   inputs,
   ...
 }: {
@@ -127,7 +128,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     discord
     steam
@@ -137,7 +137,6 @@
     alejandra
     vscode-fhs
     kdePackages.polkit-kde-agent-1
-    bambu-studio
   ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
