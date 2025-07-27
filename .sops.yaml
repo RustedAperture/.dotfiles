@@ -1,7 +1,11 @@
 keys:
-  - &primary age1638qf23lktlvd37xvyrymd44jfmx26azgcuhp2z3wxjm8rmlxpwqtg979t
+- &users
+  - &cameron age1dlzjpdrjd4jq47042xp7a09xrxclx8chmzgpfup7ps0r8pj8aewsv6dkmg
+- &hosts
+  - &nixos age1g7rz40amlwh4f82mw7pwfz62rtlnzc242u6ungcpyxe4la4m7ckspjyjsv
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - age:
-      - *primary
+      - *cameron
+      - *nixos

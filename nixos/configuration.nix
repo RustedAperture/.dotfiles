@@ -84,8 +84,8 @@
     defaultSopsFormat = "yaml";
     validateSopsFiles = false;
     age = {
-      sshKeyPaths = ["/home/cameron/.ssh/id_ed25519"];
-      keyFile = "/home/cameron/.config/sops/age/keys.txt";
+      sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+      keyFile = "/var/lib/sops-nix/key.txt";
       generateKey = true;
     };
     secrets = {
@@ -132,9 +132,20 @@
     wget
     kdePackages.bluedevil
     age
+    sops
   ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+
+  services.openssh = {
+    enable = true;
+    hostKeys = [
+      {
+        path = "/etc/ssh/ssh_host_ed25519_key";
+        type = "ed25519";
+      }
+    ];
+  };
 
   system.stateVersion = "25.05"; # Did you read the comment?
 }

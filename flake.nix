@@ -41,6 +41,9 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.cameron = import ./home-manager/home.nix;
+          home-manager.sharedModules = [
+            sops-nix.homeManagerModules.sops
+          ];
         }
 
         ./nixos/configuration.nix
