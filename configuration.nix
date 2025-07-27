@@ -58,7 +58,8 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  services.xserver.enable = false;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
@@ -135,7 +136,7 @@
     kdePackages.bluedevil
     nixd
     alejandra
-    vscode-fhs
+    vscode
     kdePackages.polkit-kde-agent-1
   ];
 

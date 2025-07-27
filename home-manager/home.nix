@@ -10,6 +10,7 @@
     packages = with pkgs; [
       kdePackages.kzones
       orca-slicer
+      kitty
     ];
   };
 
@@ -25,5 +26,9 @@
     shellAliases = {
       update = "sudo nixos-rebuild switch --flake /home/cameron/.dotfiles --upgrade";
     };
+  };
+
+  programs.vscode = {
+    enable = true;
   };
 }
