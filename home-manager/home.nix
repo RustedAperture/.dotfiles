@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ./apps/firefox/firefox.nix
+    ./apps/firefox
   ];
 
   home = {
