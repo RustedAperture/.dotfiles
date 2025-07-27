@@ -31,4 +31,11 @@
   programs.vscode = {
     enable = true;
   };
+
+  programs.kitty = {
+    enable = true;
+    settings = {
+      background_opacity = 0.8;
+    };
+  };
 }
