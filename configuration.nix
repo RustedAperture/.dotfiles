@@ -137,6 +137,7 @@
     alejandra
     vscode-fhs
     kdePackages.polkit-kde-agent-1
+    bambu-studio
   ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
