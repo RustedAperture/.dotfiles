@@ -3,6 +3,10 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./apps/firefox
+  ];
+
   home = {
     username = "cameron";
     homeDirectory = "/home/cameron";
@@ -65,5 +69,11 @@
     settings = {
       background_opacity = 0.8;
     };
+  };
+
+  programs.git = {
+    enable = true;
+    userName = "Cameron Varley";
+    userEmail = "cam.avarley@gmail.com";
   };
 }

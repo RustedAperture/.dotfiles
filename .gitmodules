@@ -1,0 +1,3 @@
+[submodule "home-manager/apps/firefox"]
+	path = home-manager/apps/firefox
+	url = git@github.com:RustedAperture/gwfox-css.git
