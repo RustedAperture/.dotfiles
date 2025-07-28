@@ -5,6 +5,12 @@
             rgba(170, 170, 170, 0.2)) !important;
     --button-active-bgcolor: light-dark(rgba(70, 70, 70, 0.15),
             rgba(170, 170, 170, 0.3)) !important;
+    --toolbarbutton-hover-background: color-mix(in srgb,
+            currentColor 10%,
+            transparent) !important;
+    --toolbarbutton-active-background: color-mix(in srgb,
+            currentColor 15%,
+            transparent) !important;
 }
 
 #tabbrowser-tabbox {
@@ -220,5 +226,11 @@ findbar::after {
     @media (-moz-platform: windows) {
         box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25),
             0 0 0 0.5px rgba(0, 0, 0, 0.15) !important;
+    }
+}
+
+.tab-background {
+    &:is([selected], [multiselected]) {
+        background-color: var(--toolbarbutton-hover-background) !important;
     }
 }
