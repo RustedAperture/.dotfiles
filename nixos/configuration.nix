@@ -80,7 +80,7 @@
   };
 
   sops = {
-    defaultSopsFile = "${builtins.toString ../secrets/secrets.yaml}";
+    defaultSopsFile = "/home/cameron/.dotfiles/secrets/secrets.yaml}";
     defaultSopsFormat = "yaml";
     validateSopsFiles = false;
     age = {
@@ -133,6 +133,7 @@
     kdePackages.bluedevil
     age
     sops
+    gparted
     inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
   ];
 

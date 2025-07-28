@@ -17,7 +17,6 @@
       # Utilies and Tools
       orca-slicer
       kitty
-      gparted
 
       # Chat
       discord
@@ -36,7 +35,7 @@
   sops = {
     age.keyFile = "/home/cameron/.config/sops/age/keys.txt";
 
-    defaultSopsFile = "${builtins.toString ../secrets/secrets.yaml}";
+    defaultSopsFile = "/home/cameron/.dotfiles/secrets/secrets.yaml}";
     validateSopsFiles = false;
 
     secrets = {
