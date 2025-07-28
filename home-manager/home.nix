@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./apps/firefox
+    ./apps/zsh
   ];
 
   home = {
@@ -46,20 +47,6 @@
     };
   };
 
-  programs.zsh = {
-    enable = true;
-
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
-    history.size = 10000;
-
-    shellAliases = {
-      update = "sudo nixos-rebuild switch --flake /home/cameron/.dotfiles --upgrade";
-    };
-  };
-
   programs.vscode = {
     enable = true;
   };
@@ -67,7 +54,7 @@
   programs.kitty = {
     enable = true;
     settings = {
-      background_opacity = 0.8;
+      background_opacity = 0.5;
     };
   };
 

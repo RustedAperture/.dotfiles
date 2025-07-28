@@ -133,6 +133,7 @@
     kdePackages.bluedevil
     age
     sops
+    inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
   ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];

@@ -12,6 +12,11 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    kwin-effects-forceblur = {
+      url = "github:taj-ny/kwin-effects-forceblur?ref=v1.3.6";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
