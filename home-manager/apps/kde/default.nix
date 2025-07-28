@@ -5,6 +5,12 @@
 
   programs.plasma = {
     enable = true;
+    workspace = {
+      wallpaperSlideShow = {
+        path = "${builtins.toString ../../../../wallpapers/32.9}";
+        interval = 900;
+      };
+    };
     panels = [
       {
         location = "bottom";

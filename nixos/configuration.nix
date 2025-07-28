@@ -80,7 +80,7 @@
   };
 
   sops = {
-    defaultSopsFile = "/home/cameron/.dotfiles/secrets/secrets.yaml";
+    defaultSopsFile = "${builtins.toString ../secrets/secrets.yaml}";
     defaultSopsFormat = "yaml";
     validateSopsFiles = false;
     age = {
