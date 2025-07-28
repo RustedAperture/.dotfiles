@@ -17,6 +17,12 @@
       url = "github:taj-ny/kwin-effects-forceblur?ref=v1.3.6";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs = inputs @ {
@@ -24,6 +30,7 @@
     nixpkgs-unstable,
     home-manager,
     sops-nix,
+    plasma-manager,
     ...
   }: let
     system = "x86_64-linux";
@@ -48,6 +55,7 @@
           home-manager.users.cameron = import ./home-manager/home.nix;
           home-manager.sharedModules = [
             sops-nix.homeManagerModules.sops
+            plasma-manager.homeManagerModules.plasma-manager
           ];
         }
 
@@ -66,7 +74,9 @@
 
     homeConfigurations.cameron = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
-      modules = [./home-manager/home.nix];
+      modules = [
+        ./home-manager/home.nix
+      ];
     };
   };
 }

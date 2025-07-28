@@ -6,6 +6,7 @@
   imports = [
     ./apps/firefox
     ./apps/zsh
+    ./apps/kde
   ];
 
   home = {
