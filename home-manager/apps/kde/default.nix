@@ -7,7 +7,7 @@
     enable = true;
     workspace = {
       wallpaperSlideShow = {
-        path = "/home/cameron/.dotfiles/wallpapers/32.9";
+        path = "/home/cameron/.dotfiles/assets/wallpapers/32.9";
         interval = 900;
       };
     };

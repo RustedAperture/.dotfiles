@@ -158,6 +158,7 @@ in {
     gparted
     inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
     dmidecode
+    base16-schemes
   ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];

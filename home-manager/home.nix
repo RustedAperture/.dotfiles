@@ -48,10 +48,17 @@
     };
   };
 
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/monokai.yaml";
+  };
+
   programs.kitty = {
     enable = true;
     settings = {
       background_opacity = 0.5;
+      font_family = "Berkeley Mono";
+      font_size = 12;
     };
   };
 

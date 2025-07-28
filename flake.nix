@@ -23,6 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    stylix = {
+      url = "github:nix-community/stylix/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -31,6 +36,7 @@
     home-manager,
     sops-nix,
     plasma-manager,
+    stylix,
     ...
   }: let
     system = "x86_64-linux";
@@ -41,6 +47,7 @@
       modules = [
         home-manager.nixosModules.home-manager
         sops-nix.nixosModules.sops
+        stylix.nixosModules.stylix
 
         {
           nix.settings.experimental-features = [
@@ -56,6 +63,7 @@
           home-manager.sharedModules = [
             sops-nix.homeManagerModules.sops
             plasma-manager.homeManagerModules.plasma-manager
+            stylix.homeModules.stylix
           ];
         }
 
