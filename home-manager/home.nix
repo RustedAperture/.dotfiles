@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   imports = [
@@ -56,7 +57,7 @@
   programs.kitty = {
     enable = true;
     settings = {
-      background_opacity = 0.5;
+      background_opacity = lib.mkForce 0.5;
       font_family = "Berkeley Mono";
       font_size = 12;
     };

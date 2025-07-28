@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.vscode = {
     enable = true;
     profiles.default = {
@@ -12,11 +16,11 @@
         github.copilot-chat
       ];
       userSettings = {
-        "editor.fontFamily" = "Berkeley Mono";
-        "editor.fontSize" = 16;
+        "editor.fontFamily" = lib.mkForce "Berkeley Mono";
+        "editor.fontSize" = lib.mkForce 16;
         "editor.fontLigatures" = true;
         "workbench.iconTheme" = "vscode-icons";
-        "workbench.colorTheme" = "Monokai Pro";
+        "workbench.colorTheme" = lib.mkForce "Monokai Pro";
         "workbench.productIconTheme" = "fluent-icons";
         "nix.serverPath" = "nixd";
         "nix.enableLanguageServer" = true;
