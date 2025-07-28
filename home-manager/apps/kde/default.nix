@@ -1,4 +1,8 @@
-{...}: {
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    kdePackages.kzones
+  ];
+
   programs.plasma = {
     enable = true;
     panels = [

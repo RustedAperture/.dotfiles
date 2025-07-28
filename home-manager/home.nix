@@ -14,9 +14,6 @@
     homeDirectory = "/home/cameron";
     stateVersion = "25.05";
     packages = with pkgs; [
-      # KDE Plasma
-      kdePackages.kzones
-
       # Utilies and Tools
       orca-slicer
       kitty
