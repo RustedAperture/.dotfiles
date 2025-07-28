@@ -53,7 +53,7 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = false;
+  services.xserver.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Enable the KDE Plasma Desktop Environment.
@@ -109,10 +109,6 @@
     shell = pkgs.zsh;
   };
 
-  # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "cameron";
-
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -122,6 +118,18 @@
 
   programs.zsh = {
     enable = true;
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
   };
 
   # Allow unfree packages
