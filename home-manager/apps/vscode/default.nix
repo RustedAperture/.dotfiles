@@ -14,6 +14,7 @@
       userSettings = {
         "editor.fontFamily" = "Berkeley Mono";
         "editor.fontSize" = 16;
+        "editor.fontLigatures" = true;
         "workbench.iconTheme" = "vscode-icons";
         "workbench.colorTheme" = "Monokai Pro";
         "workbench.productIconTheme" = "fluent-icons";
