@@ -7,7 +7,9 @@
   pkgs-unstable,
   inputs,
   ...
-}: {
+}: let
+  berkeley-mono = pkgs.callPackage ../pkgs/berkeley-mono {inherit pkgs;};
+in {
   system.autoUpgrade.enable = true;
   system.autoUpgrade.dates = "weekly";
 
@@ -109,6 +111,18 @@
     shell = pkgs.zsh;
   };
 
+  security.sudo.extraRules = [
+    {
+      users = ["cameron"];
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/dmidecode";
+          options = ["NOPASSWD"];
+        }
+      ];
+    }
+  ];
+
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -143,6 +157,7 @@
     sops
     gparted
     inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
+    dmidecode
   ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
@@ -154,6 +169,14 @@
         path = "/etc/ssh/ssh_host_ed25519_key";
         type = "ed25519";
       }
+    ];
+  };
+
+  fonts = {
+    fontDir.enable = true;
+    enableGhostscriptFonts = true;
+    packages = with pkgs; [
+      berkeley-mono
     ];
   };
 

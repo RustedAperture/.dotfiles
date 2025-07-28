@@ -17,6 +17,8 @@
       # Utilies and Tools
       orca-slicer
       kitty
+      hyfetch
+      fastfetch
 
       # Chat
       discord
@@ -60,5 +62,17 @@
     enable = true;
     userName = "Cameron Varley";
     userEmail = "cam.avarley@gmail.com";
+  };
+
+  programs.hyfetch = {
+    enable = true;
+    settings = {
+      backend = "fastfetch";
+      preset = "pansexual";
+      mode = "rgb";
+      color_align = {
+        mode = "horizontal";
+      };
+    };
   };
 }
