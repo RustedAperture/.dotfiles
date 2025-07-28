@@ -43,4 +43,9 @@
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 }
