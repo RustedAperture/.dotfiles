@@ -31,7 +31,7 @@
               General = {
                 launchers = [
                   "applications:org.kde.dolphin.desktop"
-                  "applications:org.kde.konsole.desktop"
+                  "applications:kitty.desktop"
                   "applications:firefox.desktop"
                   "applications:discord.desktop"
                 ];
