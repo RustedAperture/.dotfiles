@@ -35,7 +35,7 @@
   sops = {
     age.keyFile = "/home/cameron/.config/sops/age/keys.txt";
 
-    defaultSopsFile = "/home/cameron/.dotfiles/secrets/secrets.yaml}";
+    defaultSopsFile = "/home/cameron/.dotfiles/secrets/secrets.yaml";
     validateSopsFiles = false;
 
     secrets = {
