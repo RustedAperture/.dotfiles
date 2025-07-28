@@ -17,6 +17,7 @@
       # Utilies and Tools
       orca-slicer
       kitty
+      gparted
 
       # Chat
       discord
