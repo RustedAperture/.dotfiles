@@ -116,6 +116,7 @@
     border: none !important;
     border-radius: 6px !important;
     transition: background 0.5s !important;
+    background-color: var(--toolbarbutton-active-background) !important;
 }
 
 .urlbar-input-container {
