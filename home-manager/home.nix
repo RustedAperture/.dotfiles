@@ -7,6 +7,7 @@
     ./apps/firefox
     ./apps/zsh
     ./apps/kde
+    ./apps/vscode
   ];
 
   home = {
@@ -45,10 +46,6 @@
         path = "/home/cameron/.ssh/id_ed25519";
       };
     };
-  };
-
-  programs.vscode = {
-    enable = true;
   };
 
   programs.kitty = {
