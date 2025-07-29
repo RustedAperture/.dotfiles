@@ -58,10 +58,6 @@ in {
   services.xserver.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = false;
-  services.desktopManager.plasma6.enable = false;
-
   # Cosmic DE
   services.displayManager.cosmic-greeter.enable = true;
   services.desktopManager.cosmic.enable = true;
@@ -147,11 +143,6 @@ in {
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
-  };
-
-  programs.gamescope = {
-    enable = true;
-    capSysNice = true;
   };
 
   # Allow unfree packages

@@ -56,7 +56,7 @@
     enable = true;
     settings = {
       include = "/home/cameron/.dotfiles/assets/base16/base16-monokai-256.conf";
-      background_opacity = lib.mkForce 0.5;
+      background_opacity = 0.8;
       font_family = "Berkeley Mono";
       font_size = 12;
       color_mode = "256";
