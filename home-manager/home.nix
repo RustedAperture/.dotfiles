@@ -33,6 +33,9 @@
       nixd
       alejandra
       vscode
+
+      # Music
+      tidal-hifi
     ];
   };
 

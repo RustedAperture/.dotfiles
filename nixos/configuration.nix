@@ -59,8 +59,12 @@ in {
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = false;
+  services.desktopManager.plasma6.enable = false;
+
+  # Cosmic DE
+  services.displayManager.cosmic-greeter.enable = true;
+  services.desktopManager.cosmic.enable = true;
 
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
