@@ -3,6 +3,10 @@
   pkgs-unstable,
   ...
 }: {
+  imports = [
+    ./wallpaper.nix
+  ];
+
   home.packages = with pkgs; [
     rofi-wayland
     rofi-bluetooth
