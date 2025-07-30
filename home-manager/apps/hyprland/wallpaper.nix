@@ -6,7 +6,7 @@
 with lib; let
   theme = {
     name = "catppuccin-mocha"; # Run `nix-shell -p lutgen --command 'lutgen apply -p ""` to see supported color palettes
-    wallpapers = /home/cameron/.dotfiles/assets/wallpapers/32.9;
+    wallpapers = ../../../assets/wallpapers/32.9;
   };
 
   wallpapers = filesystem.listFilesRecursive theme.wallpapers;
