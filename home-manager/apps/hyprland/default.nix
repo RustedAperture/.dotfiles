@@ -9,9 +9,37 @@
     rofi-network-manager
     rofi-power-menu
     nwg-displays
+    nwg-look
     swayosd
     fnott
   ];
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    # x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Ice";
+    size = 16;
+  };
+
+  gtk = {
+    enable = true;
+
+    theme = {
+      package = pkgs.flat-remix-gtk;
+      name = "Flat-Remix-GTK-Blue-Darkest";
+    };
+
+    iconTheme = {
+      package = pkgs.adwaita-icon-theme;
+      name = "Adwaita";
+    };
+
+    font = {
+      name = "Sans";
+      size = 11;
+    };
+  };
 
   services.swayosd.enable = true;
 
@@ -19,6 +47,10 @@
     enable = true;
     settings = {
       "$mod" = "SUPER";
+
+      env = [
+        "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+      ];
 
       exec-once = [
         "fnott"
@@ -33,7 +65,7 @@
         "col.inactive_border" = "rgba(595959aa)";
         resize_on_border = true;
         allow_tearing = false;
-        layout = "dwindle";
+        layout = "master";
       };
 
       dwindle = {
@@ -42,7 +74,10 @@
       };
 
       master = {
-        new_status = "master";
+        new_status = "slave";
+        mfact = 0.6;
+        orientation = "center";
+        slave_count_for_center_master = 0;
       };
 
       misc = {

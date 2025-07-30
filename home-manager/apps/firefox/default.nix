@@ -17,6 +17,7 @@
           "gfx.webrender.all" = true;
           "gfx.webrender.enabled" = true;
           "layout.css.backdrop-filter.enabled" = true;
+          "widget.wayland.fractional-scale.enabled" = true;
         };
       };
     };

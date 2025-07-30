@@ -55,14 +55,16 @@ in {
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  services.xserver.enable = false;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.MOZ_ENABLE_WAYLAND = "1";
 
   # Enable hyprland
   programs.hyprland = {
     enable = true;
     withUWSM = true;
     xwayland.enable = false;
+    package = pkgs-unstable.hyprland;
   };
 
   services.greetd = {
@@ -170,6 +172,7 @@ in {
     dmidecode
     base16-schemes
     hyprpolkitagent
+    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
