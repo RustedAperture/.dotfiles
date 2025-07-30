@@ -27,7 +27,7 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -58,13 +58,22 @@ in {
   services.xserver.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  # Cosmic DE
-  services.displayManager.cosmic-greeter.enable = true;
-  services.desktopManager.cosmic.enable = true;
+  # Enable hyprland
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+    xwayland.enable = false;
+  };
 
-  # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "cameron";
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd hyprland";
+        user = "greeter";
+      };
+    };
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -151,11 +160,11 @@ in {
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     wget
-    kdePackages.bluedevil
+    #kdePackages.bluedevil
     age
     sops
     gparted
-    inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
+    #inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
     dmidecode
     base16-schemes
   ];

@@ -7,7 +7,8 @@
   imports = [
     ./apps/firefox
     ./apps/zsh
-    ./apps/kde
+    #./apps/kde
+    ./apps/hyprland
     ./apps/vscode
   ];
 
