@@ -48,6 +48,8 @@
     settings = {
       "$mod" = "SUPER";
 
+      source = "~/.config/hypr/monitors.conf";
+
       env = [
         "HYPRCURSOR_THEME,rose-pine-hyprcursor"
       ];
@@ -83,6 +85,7 @@
       misc = {
         force_default_wallpaper = -1;
         disable_hyprland_logo = false;
+        vrr = 1;
       };
 
       decoration = {
