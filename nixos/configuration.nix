@@ -173,6 +173,7 @@ in {
     base16-schemes
     hyprpolkitagent
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+    chromium
   ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];

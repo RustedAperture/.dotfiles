@@ -23,6 +23,8 @@
       kitty
       hyfetch
       fastfetch
+      btop
+      bat
 
       # Chat
       discord

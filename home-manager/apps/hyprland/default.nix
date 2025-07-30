@@ -16,6 +16,7 @@
     nwg-look
     swayosd
     fnott
+    grimblast
   ];
 
   home.pointerCursor = {
@@ -64,12 +65,12 @@
       ];
 
       general = {
-        gaps_in = 5;
-        gaps_out = 20;
+        gaps_in = 8;
+        gaps_out = 16;
         border_size = 2;
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
-        resize_on_border = true;
+        resize_on_border = false;
         allow_tearing = false;
         layout = "master";
       };
@@ -84,6 +85,7 @@
         mfact = 0.6;
         orientation = "center";
         slave_count_for_center_master = 0;
+        drop_at_cursor = true;
       };
 
       misc = {
@@ -121,6 +123,13 @@
           "$mod, W, exec, rofi-network-manager"
           "$mod, B, exec, rofi-bluetooth"
           "$mod, Q, killactive"
+
+          "$mod, DELETE, exec, grimblast --notify copysave area ~/Pictures/screenshot_$(date +%s).png"
+
+          # Move active window
+          "$mod, LEFT, layoutmsg, swapprev"
+          "$mod, RIGHT, layoutmsg, swapnext"
+          "$mod, HOME, layoutmsg, swapwithmaster"
 
           # Volume controls
           ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
