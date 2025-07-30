@@ -1,12 +1,90 @@
-{...}: {
+{
+  pkgs,
+  pkgs-unstable,
+  ...
+}: {
+  home.packages = with pkgs; [
+    rofi-wayland
+    rofi-bluetooth
+    rofi-network-manager
+    rofi-power-menu
+    nwg-displays
+    swayosd
+    fnott
+  ];
+
+  services.swayosd.enable = true;
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
       "$mod" = "SUPER";
+
+      exec-once = [
+        "fnott"
+        "systemctl --user start hyprpolkitagent"
+      ];
+
+      general = {
+        gaps_in = 5;
+        gaps_out = 20;
+        border_size = 2;
+        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        "col.inactive_border" = "rgba(595959aa)";
+        resize_on_border = true;
+        allow_tearing = false;
+        layout = "dwindle";
+      };
+
+      dwindle = {
+        pseudotile = true;
+        preserve_split = true;
+      };
+
+      master = {
+        new_status = "master";
+      };
+
+      misc = {
+        force_default_wallpaper = -1;
+        disable_hyprland_logo = false;
+      };
+
+      decoration = {
+        rounding = 10;
+        rounding_power = 2;
+        active_opacity = 1.0;
+        inactive_opacity = 1.0;
+        shadow = {
+          enabled = true;
+          range = 4;
+          render_power = 3;
+          color = "rgba(1a1a1aee)";
+        };
+        blur = {
+          enabled = true;
+          size = 3;
+          passes = 1;
+          vibrancy = 0.1696;
+        };
+      };
+
       bind =
         [
+          "$mod SHIFT, Q, exec, rofi -show p -modi p:'rofi-power-menu --symbols-font \"Symbols Nerd Font Mono\"' -font \"JetBrains Mono NF 16\" -theme Paper -theme-str 'window {width: 8em;} listview {lines: 6;}'"
+
           "$mod, F, exec, firefox"
           "$mod, T, exec, kitty"
+          "$mod, D, exec, rofi -show drun"
+          "$mod, W, exec, rofi-network-manager"
+          "$mod, B, exec, rofi-bluetooth"
+          "$mod, Q, killactive"
+
+          # Volume controls
+          ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
+          ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
         ]
         ++ (
           # workspaces

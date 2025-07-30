@@ -53,6 +53,12 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.cameron = import ./home-manager/home.nix;
+          home-manager.extraSpecialArgs = {
+            pkgs-unstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          };
           home-manager.sharedModules = [
             sops-nix.homeManagerModules.sops
             plasma-manager.homeManagerModules.plasma-manager

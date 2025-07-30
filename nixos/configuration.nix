@@ -94,6 +94,8 @@ in {
     pulse.enable = true;
   };
 
+  security.polkit.enable = true;
+
   sops = {
     defaultSopsFile = "/home/cameron/.dotfiles/secrets/secrets.yaml";
     defaultSopsFormat = "yaml";
@@ -167,6 +169,7 @@ in {
     #inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
     dmidecode
     base16-schemes
+    hyprpolkitagent
   ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
@@ -186,6 +189,7 @@ in {
     enableGhostscriptFonts = true;
     packages = with pkgs; [
       berkeley-mono
+      nerd-fonts.caskaydia-cove
     ];
   };
 
