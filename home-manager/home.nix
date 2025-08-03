@@ -17,6 +17,11 @@
     username = "cameron";
     homeDirectory = "/home/cameron";
     stateVersion = "25.05";
+
+    sessionVariables = {
+      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\\\${HOME}/.steam/root/compatibilitytools.d";
+    };
+
     packages = with pkgs; [
       # Utilies and Tools
       orca-slicer
@@ -25,13 +30,14 @@
       fastfetch
       btop
       bat
+      obsidian
 
       # Chat
       discord
 
       # Gaming
-      steam
       lutris
+      protonup-qt
 
       # Coding
       nixd

@@ -14,7 +14,10 @@
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd"];
+  boot.kernelModules = [
+    "kvm-amd"
+    "amdgpu"
+  ];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
@@ -30,8 +33,8 @@
 
   fileSystems."/mnt/games" = {
     device = "/dev/disk/by-uuid/01DBFC09E9507130";
-    fsType = "ntfs";
-    options = ["rw" "uid=1000" "gid=100" "dmask=027" "fmask=137"];
+    fsType = "ntfs-3g";
+    options = ["rw" "uid=1000" "gid=100" "umask=000"];
   };
 
   swapDevices = [];
@@ -49,14 +52,4 @@
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-
-  hardware.graphics = {
-    enable32Bit = true;
-    extraPackages = with pkgs; [
-      amdvlk
-    ];
-    extraPackages32 = with pkgs; [
-      driversi686Linux.amdvlk
-    ];
-  };
 }

@@ -27,7 +27,8 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  hardware.enableAllFirmware = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -55,9 +56,7 @@ in {
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = false;
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  environment.sessionVariables.MOZ_ENABLE_WAYLAND = "1";
+  services.xserver.enable = true;
 
   # Enable hyprland
   programs.hyprland = {
@@ -153,10 +152,37 @@ in {
 
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    gamescopeSession = {
+      enable = true;
+      steamArgs = [
+        "-pipewire-dmabuf"
+        "-tenfoot"
+      ];
+      args = [
+        "--adaptive-sync"
+        "--hdr-enabled"
+        "--mangoapp"
+        "--rt"
+        "-e"
+        "--steam"
+      ];
+    };
   };
+
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  services.xserver.videoDrivers = ["amdgpu"];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -174,7 +200,13 @@ in {
     hyprpolkitagent
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
     chromium
+    ntfs3g
+    steamcmd
+    mangohud
   ];
+
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 

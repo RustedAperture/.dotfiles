@@ -17,6 +17,7 @@
     swayosd
     fnott
     grimblast
+    pavucontrol
   ];
 
   home.pointerCursor = {
@@ -84,7 +85,7 @@
         new_status = "slave";
         mfact = 0.6;
         orientation = "center";
-        slave_count_for_center_master = 0;
+        slave_count_for_center_master = 2;
         drop_at_cursor = true;
       };
 
