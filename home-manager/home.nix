@@ -8,7 +8,6 @@
   imports = [
     ./apps/firefox
     ./apps/zsh
-    #./apps/kde
     ./apps/hyprland
     ./apps/vscode
   ];
@@ -31,6 +30,8 @@
       btop
       bat
       obsidian
+      nemo
+      home-manager
 
       # Chat
       discord
@@ -42,7 +43,7 @@
       # Coding
       nixd
       alejandra
-      vscode
+      godot-mono
 
       # Music
       tidal-hifi

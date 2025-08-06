@@ -65,13 +65,17 @@
         "systemctl --user start hyprpolkitagent"
       ];
 
+      experimental = {
+        xx_color_management_v4 = true;
+      };
+
       general = {
         gaps_in = 8;
         gaps_out = 16;
         border_size = 2;
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
-        resize_on_border = false;
+        resize_on_border = true;
         allow_tearing = false;
         layout = "master";
       };

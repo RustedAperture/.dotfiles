@@ -13,17 +13,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # kwin-effects-forceblur = {
-    #   url = "github:taj-ny/kwin-effects-forceblur?ref=v1.3.6";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # plasma-manager = {
-    #   url = "github:nix-community/plasma-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.home-manager.follows = "home-manager";
-    # };
-
     rose-pine-hyprcursor = {
       url = "github:ndom91/rose-pine-hyprcursor";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,7 +24,6 @@
     nixpkgs-unstable,
     home-manager,
     sops-nix,
-    # plasma-manager,
     ...
   }: let
     system = "x86_64-linux";

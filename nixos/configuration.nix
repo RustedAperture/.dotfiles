@@ -139,6 +139,9 @@ in {
     }
   ];
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.package = pkgs.nix-ld;
+
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -179,7 +182,9 @@ in {
 
   hardware.graphics = {
     enable = true;
+    package = pkgs-unstable.mesa;
     enable32Bit = true;
+    package32 = pkgs-unstable.pkgsi686Linux.mesa;
   };
 
   services.xserver.videoDrivers = ["amdgpu"];
@@ -190,19 +195,17 @@ in {
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     wget
-    #kdePackages.bluedevil
     age
     sops
     gparted
-    #inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
     dmidecode
     base16-schemes
     hyprpolkitagent
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-    chromium
     ntfs3g
     steamcmd
     mangohud
+    fwupd
   ];
 
   programs.appimage.enable = true;
