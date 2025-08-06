@@ -43,7 +43,7 @@
       # Coding
       nixd
       alejandra
-      godot-mono
+      godot
 
       # Music
       tidal-hifi

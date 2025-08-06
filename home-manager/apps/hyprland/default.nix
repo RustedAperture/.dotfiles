@@ -122,7 +122,6 @@
         [
           "$mod SHIFT, Q, exec, rofi -show p -modi p:'rofi-power-menu --symbols-font \"Symbols Nerd Font Mono\"' -font \"JetBrains Mono NF 16\" -theme Paper -theme-str 'window {width: 8em;} listview {lines: 6;}'"
 
-          "$mod, F, exec, firefox"
           "$mod, T, exec, kitty"
           "$mod, D, exec, rofi -show drun"
           "$mod, W, exec, rofi-network-manager"
@@ -135,6 +134,9 @@
           "$mod, LEFT, layoutmsg, swapprev"
           "$mod, RIGHT, layoutmsg, swapnext"
           "$mod, HOME, layoutmsg, swapwithmaster"
+
+          "$mod, M, fullscreen, 1"
+          "$mod, F, togglefloating"
 
           # Volume controls
           ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"

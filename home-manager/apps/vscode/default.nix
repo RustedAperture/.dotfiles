@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-unstable,
   lib,
   ...
 }: let
@@ -19,27 +20,20 @@
       }
     ];
 in {
-  home.packages = with pkgs; [
-    dotnet-sdk
-  ];
-
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode;
+    package = pkgs-unstable.vscode;
     profiles.default = {
       extensions = with pkgs.vscode-extensions;
         [
-          kamadorueda.alejandra
-          jnoortheen.nix-ide
-          signageos.signageos-vscode-sops
-          vscode-icons-team.vscode-icons
-          redhat.vscode-yaml
+          geequlim.godot-tools
           github.copilot
           github.copilot-chat
-          ms-dotnettools.csharp
-          ms-dotnettools.vscode-dotnet-runtime
-          ms-dotnettools.csdevkit
-          ms-dotnettools.vscodeintellicode-csharp
+          jnoortheen.nix-ide
+          kamadorueda.alejandra
+          redhat.vscode-yaml
+          signageos.signageos-vscode-sops
+          vscode-icons-team.vscode-icons
         ]
         ++ marketplaceExtensions;
 
