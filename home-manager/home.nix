@@ -19,19 +19,26 @@
 
     sessionVariables = {
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\\\${HOME}/.steam/root/compatibilitytools.d";
+      JAVA_11_HOME = "${pkgs.jdk11}/lib/openjdk";
+      NODE_HOME = "${pkgs.nodejs_20}/lib/node_modules";
     };
 
     packages = with pkgs; [
       # Utilies and Tools
       orca-slicer
-      kitty
-      hyfetch
       fastfetch
       btop
       bat
       obsidian
-      nemo
+      nautilus
+      file-roller
       home-manager
+      bash
+      openssl
+      jdk11
+      dart-sass
+      chromium
+      nodejs_20
 
       # Chat
       discord
@@ -44,6 +51,8 @@
       nixd
       alejandra
       godot
+      docker-compose
+      pkgs-unstable.jetbrains.idea-ultimate
 
       # Music
       tidal-hifi
@@ -60,6 +69,9 @@
       "private_keys/cameron" = {
         path = "/home/cameron/.ssh/id_ed25519";
       };
+      "public_keys/cameron" = {
+        path = "/home/cameron/.ssh/id_ed25519.pub";
+      };
     };
   };
 
@@ -70,7 +82,6 @@
       background_opacity = 0.8;
       font_family = "Berkeley Mono";
       font_size = 12;
-      color_mode = "256";
     };
   };
 

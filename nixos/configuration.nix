@@ -60,7 +60,6 @@ in {
     enable = true;
     withUWSM = true;
     xwayland.enable = false;
-    package = pkgs-unstable.hyprland;
   };
 
   services.greetd = {
@@ -120,6 +119,7 @@ in {
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
     shell = pkgs.zsh;
   };
@@ -179,9 +179,7 @@ in {
 
   hardware.graphics = {
     enable = true;
-    package = pkgs-unstable.mesa;
     enable32Bit = true;
-    package32 = pkgs-unstable.pkgsi686Linux.mesa;
   };
 
   services.xserver.videoDrivers = ["amdgpu"];
@@ -225,8 +223,11 @@ in {
     enableGhostscriptFonts = true;
     packages = with pkgs; [
       berkeley-mono
-      nerd-fonts.caskaydia-cove
     ];
+  };
+
+  virtualisation.docker = {
+    enable = true;
   };
 
   system.stateVersion = "25.05"; # Did you read the comment?
