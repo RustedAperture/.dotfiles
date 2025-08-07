@@ -85,8 +85,7 @@
       master = {
         new_status = "slave";
         mfact = 0.6;
-        orientation = "center";
-        slave_count_for_center_master = 2;
+        orientation = "left";
         drop_at_cursor = true;
       };
 
