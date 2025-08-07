@@ -17,11 +17,10 @@ function __git_symbols() {
 	local ahead='↑'
 	local behind='↓'
 	local diverged='↕'
-	local up_to_date='|'
 	local no_remote=''
 	local staged='+'
-	local untracked='?'
-	local modified='!'
+	local untracked='U'
+	local modified='M'
 	local moved='>'
 	local deleted='x'
 	local stashed='$'
@@ -49,9 +48,6 @@ function __git_symbols() {
 		[[ $behind_count != 0 ]] && output_symbols+="$behind"
 		# Replace the ahead symbol with the diverged symbol when both ahead and behind
 		output_symbols="${output_symbols//$ahead$behind/$diverged}"
-
-		# If the branch is up to date, show the up to date symbol
-		[[ $ahead_count == 0 && $behind_count == 0 ]] && output_symbols+="$up_to_date"
 	fi
 
 	# STASHED
@@ -93,8 +89,8 @@ function __git_info() {
 			git_info+="$git_branch_name"
 		fi
 		# Get the Git status
-		git_info+="$(__git_symbols)"
-		echo "%F{default}on %F{blue}$git_info"
+		git_info+="%F{red}$(__git_symbols)"
+		echo "%F{default}on %F{blue}$git_info "
 	fi
 }
 
