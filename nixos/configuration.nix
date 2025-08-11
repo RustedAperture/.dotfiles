@@ -56,21 +56,26 @@ in {
   services.xserver.enable = true;
 
   # Enable hyprland
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-    xwayland.enable = false;
-  };
+  # programs.hyprland = {
+  #   enable = true;
+  #   withUWSM = true;
+  #   xwayland.enable = false;
+  # };
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd hyprland";
-        user = "greeter";
-      };
-    };
-  };
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  services.udev.packages = [pkgs.gnome-settings-daemon];
+
+  # services.greetd = {
+  #   enable = true;
+  #   settings = {
+  #     default_session = {
+  #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd hyprland";
+  #       user = "greeter";
+  #     };
+  #   };
+  # };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -188,20 +193,26 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile.
-  environment.systemPackages = with pkgs; [
-    wget
-    age
-    sops
-    gparted
-    dmidecode
-    base16-schemes
-    hyprpolkitagent
-    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-    ntfs3g
-    steamcmd
-    mangohud
-    fwupd
-  ];
+  environment = {
+    shells = with pkgs; [zsh];
+
+    systemPackages = with pkgs; [
+      wget
+      age
+      sops
+      gparted
+      dmidecode
+      base16-schemes
+      ntfs3g
+      steamcmd
+      mangohud
+      fwupd
+      docker-compose
+      podman-compose
+      gnomeExtensions.appindicator
+      gnomeExtensions.just-perfection
+    ];
+  };
 
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
@@ -226,8 +237,11 @@ in {
     ];
   };
 
-  virtualisation.docker = {
+  virtualisation.docker.enable = false;
+  virtualisation.podman = {
     enable = true;
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true;
   };
 
   system.stateVersion = "25.05"; # Did you read the comment?

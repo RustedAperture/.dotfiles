@@ -8,8 +8,9 @@
   imports = [
     ./apps/firefox
     ./apps/zsh
-    ./apps/hyprland
+    #./apps/hyprland
     ./apps/vscode
+    ./apps/dconf
   ];
 
   home = {
@@ -24,38 +25,49 @@
     };
 
     packages = with pkgs; [
-      # Utilies and Tools
-      orca-slicer
-      fastfetch
-      btop
-      bat
-      obsidian
-      nautilus
-      file-roller
-      home-manager
+      # System / Core Utilities
       bash
+      bat
+      btop
+      fastfetch
+      mission-center
       openssl
-      jdk11
-      dart-sass
-      chromium
-      nodejs_20
+      home-manager
+      refine
+      dconf-editor
 
-      # Chat
+      # Development Toolchains & Formatters
+      jdk11
+      nodejs_20
+      dart-sass
+      docker-compose
+      nixd
+      alejandra
+
+      # IDEs / Editors / Knowledge
+      pkgs-unstable.jetbrains.idea-ultimate
+      godot
+      obsidian
+      podman-desktop
+
+      # Browser
+      chromium
+
+      # Communication
       discord
 
       # Gaming
       lutris
       protonup-qt
 
-      # Coding
-      nixd
-      alejandra
-      godot
-      docker-compose
-      pkgs-unstable.jetbrains.idea-ultimate
+      # Maker / 3D Printing
+      orca-slicer
 
-      # Music
+      # Music / Media
       tidal-hifi
+
+      # Themes / Appearance
+      qogir-icon-theme
     ];
   };
 
@@ -101,5 +113,11 @@
         mode = "horizontal";
       };
     };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style.name = "adwaita-dark";
   };
 }
