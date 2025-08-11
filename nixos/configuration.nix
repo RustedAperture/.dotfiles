@@ -9,6 +9,8 @@
   ...
 }: let
   berkeley-mono = pkgs.callPackage ../pkgs/berkeley-mono {inherit pkgs;};
+  monitorsXmlContent = builtins.readFile ./monitors.xml;
+  monitorsConfig = pkgs.writeText "gdm_monitors.xml" monitorsXmlContent;
 in {
   nix.gc.automatic = true;
   nix.gc.dates = "daily";
@@ -66,6 +68,10 @@ in {
   services.xserver.desktopManager.gnome.enable = true;
 
   services.udev.packages = [pkgs.gnome-settings-daemon];
+
+  systemd.tmpfiles.rules = [
+    "L+ /run/gdm/.config/monitors.xml - - - - ${monitorsConfig}"
+  ];
 
   # services.greetd = {
   #   enable = true;
@@ -211,6 +217,8 @@ in {
       podman-compose
       gnomeExtensions.appindicator
       gnomeExtensions.just-perfection
+      gnomeExtensions.dash-to-panel
+      gnomeExtensions.tiling-shell
     ];
   };
 

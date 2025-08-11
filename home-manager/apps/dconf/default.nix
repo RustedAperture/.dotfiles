@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   dconf = {
     enable = true;
     settings = {
@@ -7,6 +7,8 @@
         enabled-extensions = [
           "appindicatorsupport@rgcjonas.gmail.com"
           "just-perfection-desktop@just-perfection"
+          "dash-to-panel@jderose9.github.com"
+          pkgs.gnomeExtensions.tiling-shell.extensionUuid
         ];
       };
 
