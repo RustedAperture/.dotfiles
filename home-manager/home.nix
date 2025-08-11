@@ -35,6 +35,7 @@
       home-manager
       refine
       dconf-editor
+      dconf2nix
 
       # Development Toolchains & Formatters
       jdk11

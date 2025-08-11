@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -17,6 +18,7 @@
   outputs = inputs @ {
     nixpkgs,
     nixpkgs-unstable,
+    chaotic,
     home-manager,
     sops-nix,
     ...
@@ -54,6 +56,7 @@
         }
 
         ./nixos/configuration.nix
+        chaotic.nixosModules.default
       ];
 
       specialArgs = {

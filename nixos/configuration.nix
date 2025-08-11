@@ -1,10 +1,6 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
   pkgs,
-  pkgs-unstable,
   inputs,
   ...
 }: let
@@ -12,10 +8,25 @@
   monitorsXmlContent = builtins.readFile ./monitors.xml;
   monitorsConfig = pkgs.writeText "gdm_monitors.xml" monitorsXmlContent;
 in {
-  nix.gc.automatic = true;
-  nix.gc.dates = "daily";
-  nix.gc.options = "--delete-older-than 2d";
-  nix.settings.auto-optimise-store = true;
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-than 2d";
+    };
+
+    settings = {
+      system-features = ["nixos-test" "benchmark" "big-parallel" "kvm" "gccarch-x86-64-v3"];
+      auto-optimise-store = true;
+      trusted-users = ["root" "cameron" "@wheel"];
+      extra-substituters = [
+        "https://chaotic-nyx.cachix.org"
+      ];
+      extra-trusted-public-keys = [
+        "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
+      ];
+    };
+  };
 
   imports = [
     ./hardware-configuration.nix
@@ -26,11 +37,12 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos.cachyOverride {mArch = "GENERIC_V3";};
+  services.scx.enable = true;
+  services.scx.scheduler = "scx_rusty";
   hardware.enableAllFirmware = true;
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -166,6 +178,9 @@ in {
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    extraCompatPackages = [
+      pkgs.proton-cachyos
+    ];
     gamescopeSession = {
       enable = true;
       steamArgs = [
@@ -219,6 +234,7 @@ in {
       gnomeExtensions.just-perfection
       gnomeExtensions.dash-to-panel
       gnomeExtensions.tiling-shell
+      gnomeExtensions.wallpaper-slideshow
     ];
   };
 
