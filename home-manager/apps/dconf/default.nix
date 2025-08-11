@@ -8,12 +8,20 @@
     settings = {
       "org/gnome/shell" = {
         disable-user-extensions = false;
+
         enabled-extensions = with pkgs; [
           gnomeExtensions.appindicator.extensionUuid
           gnomeExtensions.just-perfection.extensionUuid
           gnomeExtensions.dash-to-panel.extensionUuid
           gnomeExtensions.tiling-shell.extensionUuid
           gnomeExtensions.wallpaper-slideshow.extensionUuid
+        ];
+
+        favorite-apps = [
+          "org.gnome.Nautilus.desktop"
+          "firefox.desktop"
+          "discord.desktop"
+          "steam.desktop"
         ];
       };
 
@@ -46,6 +54,10 @@
         panel-element-positions = ''
           {"SAM-HCSX300724":[{"element":"showAppsButton","visible":true,"position":"centered"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}]}
         '';
+      };
+
+      "org/gnome/desktop/wm/preferences" = {
+        button-layout = "appmenu:minimize,maximize,close";
       };
     };
   };
