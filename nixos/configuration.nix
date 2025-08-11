@@ -131,6 +131,9 @@ in {
       "networkmanager"
       "wheel"
       "docker"
+      "tty"
+      "dialout"
+      "uucp"
     ];
     shell = pkgs.zsh;
   };
@@ -226,7 +229,9 @@ in {
       gnomeExtensions.gsconnect
       gnomeExtensions.dash-to-dock
       gnomeExtensions.vitals
+      gnomeExtensions.gdeej
       nautilus
+      socat
     ];
   };
 

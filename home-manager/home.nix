@@ -60,6 +60,7 @@
       # Gaming
       lutris
       protonup-qt
+      pkgs-unstable.heroic
 
       # Maker / 3D Printing
       orca-slicer

@@ -18,6 +18,7 @@
           gnomeExtensions.gsconnect.extensionUuid
           gnomeExtensions.dash-to-dock.extensionUuid
           gnomeExtensions.vitals.extensionUuid
+          gnomeExtensions.gdeej.extensionUuid
         ];
 
         favorite-apps = [
@@ -45,7 +46,7 @@
 
       "org/gnome/shell/extensions/azwallpaper" = {
         slideshow-directory = "/home/cameron/.dotfiles/assets/wallpapers/32.9";
-        lideshow-slide-duration = lib.hm.gvariant.mkTuple [0 15 0];
+        slideshow-slide-duration = lib.hm.gvariant.mkTuple [0 15 0];
       };
 
       "org/gnome/desktop/wm/preferences" = {
@@ -79,6 +80,29 @@
       "org/gnome/desktop/session" = {
         idle-delay = lib.hm.gvariant.mkUint32 0;
       };
+
+      "org/gnome/shell/extensions/gdeej" = {
+        device-auto-detect = false;
+        device-baud-rate = "9600";
+        device-path = "/dev/ttyUSB0";
+        serial-enabled = true;
+      };
+
+      "org/gnome/shell/extensions/vitals" = {
+        alphabetize = true;
+        fixed-widths = true;
+        hide-icons = false;
+        hot-sensors = ["_memory_usage_" "_processor_usage_"];
+        icon-style = 1;
+        include-static-info = false;
+        menu-centered = false;
+        position-in-panel = 2;
+        show-system = true;
+      };
     };
   };
+
+  home.activation.gdeejSliders = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ${pkgs.dconf}/bin/dconf write /org/gnome/shell/extensions/gdeej/sliders "[{'target': <uint16 0>, 'customApp': <\"\">, 'inverted': <true>, 'min': <uint16 0>, 'max': <uint16 1024>}, {'target': <uint16 4>, 'customApp': <\"Firefox\">, 'inverted': <true>, 'min': <uint16 0>, 'max': <uint16 1024>}, {'target': <uint16 4>, 'customApp': <\"Tidal\">, 'inverted': <true>, 'min': <uint16 0>, 'max': <uint16 1024>}, {'target': <uint16 3>, 'customApp': <\"Discord\">, 'inverted': <true>, 'min': <uint16 0>, 'max': <uint16 1024>}, {'target': <uint16 1>, 'customApp': <\"\">, 'inverted': <true>, 'min': <uint16 0>, 'max': <uint16 1024>}]"
+  '';
 }
