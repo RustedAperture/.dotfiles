@@ -69,31 +69,19 @@ in {
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  # Enable hyprland
-  # programs.hyprland = {
-  #   enable = true;
-  #   withUWSM = true;
-  #   xwayland.enable = false;
-  # };
-
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+
+  services.gnome.core-apps.enable = false;
+  services.gnome.core-developer-tools.enable = false;
+  services.gnome.games.enable = false;
+  environment.gnome.excludePackages = with pkgs; [gnome-tour gnome-user-docs];
 
   services.udev.packages = [pkgs.gnome-settings-daemon];
 
   systemd.tmpfiles.rules = [
     "L+ /run/gdm/.config/monitors.xml - - - - ${monitorsConfig}"
   ];
-
-  # services.greetd = {
-  #   enable = true;
-  #   settings = {
-  #     default_session = {
-  #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd hyprland";
-  #       user = "greeter";
-  #     };
-  #   };
-  # };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -232,9 +220,13 @@ in {
       podman-compose
       gnomeExtensions.appindicator
       gnomeExtensions.just-perfection
-      gnomeExtensions.dash-to-panel
       gnomeExtensions.tiling-shell
       gnomeExtensions.wallpaper-slideshow
+      gnomeExtensions.blur-my-shell
+      gnomeExtensions.gsconnect
+      gnomeExtensions.dash-to-dock
+      gnomeExtensions.vitals
+      nautilus
     ];
   };
 
