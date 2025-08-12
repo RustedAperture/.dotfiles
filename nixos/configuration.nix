@@ -78,6 +78,7 @@ in {
   environment.gnome.excludePackages = with pkgs; [gnome-tour gnome-user-docs];
 
   services.udev.packages = [pkgs.gnome-settings-daemon];
+  services.gvfs.enable = true;
 
   systemd.tmpfiles.rules = [
     "L+ /run/gdm/.config/monitors.xml - - - - ${monitorsConfig}"
@@ -100,6 +101,25 @@ in {
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.extraConfig."99-disable-suspend" = {
+      "monitor.alsa.rules" = [
+        {
+          matches = [
+            {
+              "node.name" = "~alsa_input.*";
+            }
+            {
+              "node.name" = "~alsa_output.*";
+            }
+          ];
+          actions = {
+            update-props = {
+              "session.suspend-timeout-seconds" = 0;
+            };
+          };
+        }
+      ];
+    };
   };
 
   security.polkit.enable = true;
@@ -231,6 +251,7 @@ in {
       gnomeExtensions.vitals
       gnomeExtensions.gdeej
       nautilus
+      file-roller
       socat
     ];
   };
