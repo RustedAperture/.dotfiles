@@ -30,6 +30,7 @@ in {
 
   imports = [
     ./hardware-configuration.nix
+    ./services.nix
   ];
 
   # Bootloader.
@@ -65,62 +66,11 @@ in {
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
-
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  services.gnome.core-apps.enable = false;
-  services.gnome.core-developer-tools.enable = false;
-  services.gnome.games.enable = false;
   environment.gnome.excludePackages = with pkgs; [gnome-tour gnome-user-docs];
-
-  services.udev.packages = [pkgs.gnome-settings-daemon];
-  services.gvfs.enable = true;
 
   systemd.tmpfiles.rules = [
     "L+ /run/gdm/.config/monitors.xml - - - - ${monitorsConfig}"
   ];
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    wireplumber.extraConfig."99-disable-suspend" = {
-      "monitor.alsa.rules" = [
-        {
-          matches = [
-            {
-              "node.name" = "~alsa_input.*";
-            }
-            {
-              "node.name" = "~alsa_output.*";
-            }
-          ];
-          actions = {
-            update-props = {
-              "session.suspend-timeout-seconds" = 0;
-            };
-          };
-        }
-      ];
-    };
-  };
 
   security.polkit.enable = true;
 
@@ -219,7 +169,7 @@ in {
     enable32Bit = true;
   };
 
-  services.xserver.videoDrivers = ["amdgpu"];
+  chaotic.mesa-git.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -255,6 +205,7 @@ in {
       socat
       wl-clipboard
       jq
+      vulkan-tools
     ];
   };
 
@@ -262,16 +213,6 @@ in {
   programs.appimage.binfmt = true;
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
-
-  services.openssh = {
-    enable = true;
-    hostKeys = [
-      {
-        path = "/etc/ssh/ssh_host_ed25519_key";
-        type = "ed25519";
-      }
-    ];
-  };
 
   fonts = {
     fontDir.enable = true;

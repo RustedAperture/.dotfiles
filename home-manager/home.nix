@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  pkgs-unstable,
   lib,
   ...
 }: {
@@ -20,7 +19,7 @@
 
     sessionVariables = {
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\\\${HOME}/.steam/root/compatibilitytools.d";
-      JAVA_11_HOME = "${pkgs.jdk11}/lib/openjdk";
+      JAVA_HOME_11 = "${pkgs.zulu11}/lib/openjdk";
       NODE_HOME = "${pkgs.nodejs_20}/lib/node_modules";
     };
 
@@ -39,7 +38,7 @@
       flameshot
 
       # Development Toolchains & Formatters
-      jdk11
+      zulu11
       nodejs_20
       dart-sass
       docker-compose
@@ -47,7 +46,7 @@
       alejandra
 
       # IDEs / Editors / Knowledge
-      pkgs-unstable.jetbrains.idea-ultimate
+      jetbrains.idea-ultimate
       godot
       obsidian
       podman-desktop
@@ -61,7 +60,7 @@
       # Gaming
       lutris
       protonup-qt
-      pkgs-unstable.heroic
+      heroic
 
       # Maker / 3D Printing
       orca-slicer
@@ -96,6 +95,7 @@
 
   programs.kitty = {
     enable = true;
+    package = pkgs.kitty;
     settings = {
       include = "/home/cameron/.dotfiles/assets/base16/base16-monokai-256.conf";
       background_opacity = 0.8;

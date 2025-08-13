@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-unstable,
   lib,
   ...
 }: let
@@ -22,7 +21,7 @@
 in {
   programs.vscode = {
     enable = true;
-    package = pkgs-unstable.vscode;
+    package = pkgs.vscode;
     profiles.default = {
       extensions = with pkgs.vscode-extensions;
         [
