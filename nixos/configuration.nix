@@ -134,7 +134,7 @@ in {
       generateKey = true;
     };
     secrets = {
-      cameron_passwd = {
+      "cameron/passwd" = {
         neededForUsers = true;
       };
     };
@@ -146,7 +146,7 @@ in {
   users.users.cameron = {
     isNormalUser = true;
     description = "Cameron";
-    hashedPasswordFile = config.sops.secrets.cameron_passwd.path;
+    hashedPasswordFile = config.sops.secrets."cameron/passwd".path;
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -253,6 +253,8 @@ in {
       nautilus
       file-roller
       socat
+      wl-clipboard
+      jq
     ];
   };
 

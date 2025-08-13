@@ -100,6 +100,25 @@
         position-in-panel = 2;
         show-system = true;
       };
+
+      "org/gnome/settings-daemon/plugins/media-keys" = {
+        custom-keybindings = [
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+        ];
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+        binding = "<Super>t";
+        command = "kitty";
+        name = "Kitty";
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+        binding = "<Super>Delete";
+        command = "/home/cameron/.dotfiles/assets/zipline-flameshot-file.sh";
+        name = "Flameshot";
+      };
     };
   };
 

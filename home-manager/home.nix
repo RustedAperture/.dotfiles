@@ -36,6 +36,7 @@
       refine
       dconf-editor
       dconf2nix
+      flameshot
 
       # Development Toolchains & Formatters
       jdk11
@@ -80,11 +81,15 @@
     validateSopsFiles = false;
 
     secrets = {
-      "private_keys/cameron" = {
+      "cameron/private_key" = {
         path = "/home/cameron/.ssh/id_ed25519";
       };
-      "public_keys/cameron" = {
+      "cameron/public_key" = {
         path = "/home/cameron/.ssh/id_ed25519.pub";
+      };
+      "cameron/zipline" = {
+        path = "/home/cameron/.config/zipline/token";
+        mode = "0400";
       };
     };
   };
