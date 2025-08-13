@@ -36,6 +36,8 @@
       dconf-editor
       dconf2nix
       flameshot
+      nautilus
+      file-roller
 
       # Development Toolchains & Formatters
       zulu11

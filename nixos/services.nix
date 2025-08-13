@@ -1,13 +1,16 @@
-{...}: {
+{pkgs, ...}: {
   services = {
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
+
     gnome = {
       core-apps.enable = false;
       core-developer-tools.enable = false;
       games.enable = false;
     };
+
     gvfs.enable = true;
+
     openssh = {
       enable = true;
       hostKeys = [
@@ -17,6 +20,7 @@
         }
       ];
     };
+
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -42,13 +46,21 @@
         ];
       };
     };
+
     printing.enable = true;
+
     pulseaudio.enable = false;
-    rtkit.enable = true;
+
     udev.packages = [pkgs.gnome-settings-daemon];
+
+    scx = {
+      enable = true;
+      scheduler = "scx_rusty";
+    };
+
     xserver = {
       enable = true;
-      kb = {
+      xkb = {
         layout = "us";
         variant = "";
       };
