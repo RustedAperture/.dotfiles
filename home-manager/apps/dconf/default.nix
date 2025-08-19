@@ -10,15 +10,15 @@
         disable-user-extensions = false;
 
         enabled-extensions = with pkgs; [
-          gnomeExtensions.appindicator.extensionUuid
+          gnomeExtensions.tray-icons-reloaded.extensionUuid
           gnomeExtensions.just-perfection.extensionUuid
           gnomeExtensions.tiling-shell.extensionUuid
           gnomeExtensions.wallpaper-slideshow.extensionUuid
           gnomeExtensions.blur-my-shell.extensionUuid
-          gnomeExtensions.gsconnect.extensionUuid
           gnomeExtensions.dash-to-dock.extensionUuid
           gnomeExtensions.vitals.extensionUuid
           gnomeExtensions.gdeej.extensionUuid
+          gnomeExtensions.mpris-label.extensionUuid
         ];
 
         favorite-apps = [
@@ -118,6 +118,12 @@
         binding = "<Super>Delete";
         command = "/home/cameron/.dotfiles/assets/zipline-flameshot-file.sh";
         name = "Flameshot";
+      };
+
+      "org/gnome/shell/extensions/mpris-label" = {
+        extension-place = "center";
+        left-padding = 0;
+        right-padding = 0;
       };
     };
   };

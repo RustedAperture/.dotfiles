@@ -44,12 +44,40 @@ in {
       efi.canTouchEfiVariables = true;
     };
 
+    kernel = {
+      sysctl = {
+        "net.core.rmem_max" = 26214400;
+        "net.core.wmem_max" = 26214400;
+      };
+    };
+
     kernelPackages = pkgs.linuxPackages_cachyos.cachyOverride {mArch = "GENERIC_V3";};
   };
 
   networking = {
     hostName = "nixos";
+    domain = "local";
     networkmanager.enable = true;
+    useDHCP = false;
+    useNetworkd = true;
+    firewall = {
+      enable = true;
+      allowedUDPPorts = [
+        45588
+      ];
+    };
+  };
+
+  systemd.network = {
+    networks = {
+      "wlp8s0" = {
+        name = "wlp8s0";
+        DHCP = "ipv4";
+        networkConfig = {
+          MulticastDNS = true;
+        };
+      };
+    };
   };
 
   # Set your time zone.
@@ -122,11 +150,12 @@ in {
   };
 
   virtualisation = {
-    docker.enable = false;
-    podman = {
-      enable = true;
-      dockerCompat = true;
-      defaultNetwork.settings.dns_enabled = true;
+    docker = {
+      enable = false;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
     };
   };
 

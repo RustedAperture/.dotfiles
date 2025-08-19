@@ -38,6 +38,7 @@
       flameshot
       nautilus
       file-roller
+      gnome-pomodoro
 
       # Development Toolchains & Formatters
       zulu11

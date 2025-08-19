@@ -17,15 +17,15 @@
       fwupd
       docker-compose
       podman-compose
-      gnomeExtensions.appindicator
+      gnomeExtensions.tray-icons-reloaded
       gnomeExtensions.just-perfection
       gnomeExtensions.tiling-shell
       gnomeExtensions.wallpaper-slideshow
       gnomeExtensions.blur-my-shell
-      gnomeExtensions.gsconnect
       gnomeExtensions.dash-to-dock
       gnomeExtensions.vitals
       gnomeExtensions.gdeej
+      gnomeExtensions.mpris-label
       socat
       wl-clipboard
       jq

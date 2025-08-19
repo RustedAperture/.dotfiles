@@ -11,6 +11,8 @@
 
     gvfs.enable = true;
 
+    ipp-usb.enable = true;
+
     openssh = {
       enable = true;
       hostKeys = [
@@ -47,16 +49,23 @@
       };
     };
 
-    printing.enable = true;
+    printing = {
+      enable = true;
+      drivers = with pkgs; [
+        epson-escpr
+      ];
+    };
 
     pulseaudio.enable = false;
 
-    udev.packages = [pkgs.gnome-settings-daemon];
+    resolved.enable = true;
 
     scx = {
       enable = true;
       scheduler = "scx_rusty";
     };
+
+    udev.packages = [pkgs.gnome-settings-daemon];
 
     xserver = {
       enable = true;
