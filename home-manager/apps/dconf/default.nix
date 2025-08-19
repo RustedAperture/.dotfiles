@@ -10,7 +10,7 @@
         disable-user-extensions = false;
 
         enabled-extensions = with pkgs; [
-          gnomeExtensions.tray-icons-reloaded.extensionUuid
+          gnomeExtensions.appindicator.extensionUuid
           gnomeExtensions.just-perfection.extensionUuid
           gnomeExtensions.tiling-shell.extensionUuid
           gnomeExtensions.wallpaper-slideshow.extensionUuid

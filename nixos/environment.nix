@@ -17,7 +17,7 @@
       fwupd
       docker-compose
       podman-compose
-      gnomeExtensions.tray-icons-reloaded
+      gnomeExtensions.appindicator
       gnomeExtensions.just-perfection
       gnomeExtensions.tiling-shell
       gnomeExtensions.wallpaper-slideshow

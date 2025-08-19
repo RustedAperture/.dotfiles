@@ -7,7 +7,6 @@
   imports = [
     ./apps/firefox
     ./apps/zsh
-    #./apps/hyprland
     ./apps/vscode
     ./apps/dconf
   ];
@@ -24,54 +23,58 @@
     };
 
     packages = with pkgs; [
-      # System / Core Utilities
+      # System Utilities
       bash
       bat
       btop
       fastfetch
+      home-manager
       mission-center
       openssl
-      home-manager
-      refine
+
+      # File Management & Screenshots
       dconf-editor
       dconf2nix
+      file-roller
       flameshot
       nautilus
-      file-roller
-      gnome-pomodoro
 
-      # Development Toolchains & Formatters
-      zulu11
-      nodejs_20
+      # Productivity & Time Management
+      gnome-pomodoro
+      refine
+
+      # Development Tools & Languages
+      alejandra
       dart-sass
       docker-compose
       nixd
-      alejandra
+      nodejs_20
+      zulu11
 
-      # IDEs / Editors / Knowledge
-      jetbrains.idea-ultimate
+      # IDEs & Editors
       godot
+      jetbrains.idea-ultimate
       obsidian
       podman-desktop
 
-      # Browser
+      # Web Browsers
       chromium
 
       # Communication
       discord
 
       # Gaming
+      heroic
       lutris
       protonup-qt
-      heroic
 
-      # Maker / 3D Printing
+      # Creative & 3D Printing
       orca-slicer
 
-      # Music / Media
+      # Music & Media
       tidal-hifi
 
-      # Themes / Appearance
+      # Themes & Appearance
       qogir-icon-theme
     ];
   };
