@@ -1,3 +1,7 @@
+# =============================================================================
+# ALIASES
+# =============================================================================
+
 # Nix Commands
 alias update="sudo nixos-rebuild switch --flake /home/cameron/.dotfiles"
 alias upgrade="cd /home/cameron/.dotfiles && nix flake update && sudo nixos-rebuild switch --flake /home/cameron/.dotfiles"
@@ -16,6 +20,12 @@ alias gpl="git pull"
 alias groh='git reset origin/$(git_current_branch) --hard'
 alias gm="git merge"
 
+
+# =============================================================================
+# GIT FUNCTIONS
+# =============================================================================
+
+# Auto-fetch when entering git directories
 autoload -U add-zsh-hook
 function auto_git_fetch() {
     if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -128,23 +138,27 @@ function __git_symbols() {
     [[ -n $output_symbols ]] && echo -n " $output_symbols"
 }
 
-
 # Function to display Git status with symbols
 function __git_info() {
-	local git_info=''
-	local git_branch_name=''
+    local git_info=''
+    local git_branch_name=''
 
-	if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-		# Get the Git branch name
-		git_branch_name="$(git symbolic-ref --short HEAD 2>/dev/null)"
-		if [[ -n "$git_branch_name" ]]; then
-			git_info+="$git_branch_name"
-		fi
-		# Get the Git status
-		git_info+="%F{red}$(__git_symbols)"
-		echo "%F{default}on %F{blue}$git_info "
-	fi
+    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        # Get the Git branch name
+        git_branch_name="$(git symbolic-ref --short HEAD 2>/dev/null)"
+        if [[ -n "$git_branch_name" ]]; then
+            git_info+="$git_branch_name"
+        fi
+        # Get the Git status
+        git_info+="%F{red}$(__git_symbols)"
+        echo "%F{default}on %F{blue}$git_info "
+    fi
 }
+
+
+# =============================================================================
+# PROMPT FUNCTIONS
+# =============================================================================
 
 function __nix_shell_info() {
     if [[ -n "$IN_NIX_SHELL" ]]; then
@@ -158,9 +172,19 @@ function __nix_shell_info() {
     fi
 }
 
+
+# =============================================================================
+# PROMPT CONFIGURATION
+# =============================================================================
+
 setopt PROMPT_SUBST
 export PROMPT='%F{yellow}╭─[ %n%F{default}@%F{yellow}%m %F{cyan}%~ $(__git_info)$(__nix_shell_info)%F{yellow}]
 %F{yellow}╰─%F{green}❯ %F{default}'
+
+
+# =============================================================================
+# KEYBINDINGS
+# =============================================================================
 
 # Start typing + [Up-Arrow] - fuzzy find history forward
 autoload -U up-line-or-beginning-search
@@ -187,4 +211,3 @@ if [[ -n "${terminfo[kcud1]}" ]]; then
   bindkey -M viins "${terminfo[kcud1]}" down-line-or-beginning-search
   bindkey -M vicmd "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
-
