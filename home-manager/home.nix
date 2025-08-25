@@ -42,6 +42,7 @@
       # Productivity & Time Management
       gnome-pomodoro
       refine
+      taskwarrior3
 
       # Development Tools & Languages
       alejandra

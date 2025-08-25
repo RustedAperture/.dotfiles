@@ -20,6 +20,11 @@ alias gpl="git pull"
 alias groh='git reset origin/$(git_current_branch) --hard'
 alias gm="git merge"
 
+# Taskwarrior Commands
+alias tl="task list"
+alias ta="task add"
+alias td="task done"
+
 
 # =============================================================================
 # GIT FUNCTIONS
@@ -193,3 +198,29 @@ zle -N down-line-or-beginning-search
 
 bindkey -M emacs "${terminfo[kcuu1]}" up-line-or-beginning-search
 bindkey -M emacs "${terminfo[kcud1]}" down-line-or-beginning-search
+
+
+# =============================================================================
+# MOTD FUNCTION
+# =============================================================================
+
+function __show_taskwarrior_motd() {
+    if command -v task >/dev/null 2>&1; then
+        local pending_tasks=$(task status:pending count 2>/dev/null)
+        if [[ $pending_tasks -gt 0 ]]; then
+            echo -e "\033[33m📝 Taskwarrior Summary:\033[0m"  # Yellow
+            echo -e "\033[36mYou have $pending_tasks pending tasks\033[0m"  # Cyan
+            # Show next 3 most urgent tasks
+            task next limit:3 2>/dev/null | head -n 5
+            echo ""
+        else
+            echo -e "\033[32m✅ No pending tasks!\033[0m"  # Green
+            echo ""
+        fi
+    fi
+}
+
+# Show motd on shell startup
+if [[ $SHLVL -eq 1 ]]; then
+    __show_taskwarrior_motd
+fi
