@@ -62,19 +62,23 @@ in {
     useNetworkd = true;
     firewall = {
       enable = true;
+      allowedTCPPorts = [
+      ];
       allowedUDPPorts = [
         45588
       ];
     };
   };
 
-  systemd.network = {
-    networks = {
-      "wlp8s0" = {
-        name = "wlp8s0";
-        DHCP = "ipv4";
-        networkConfig = {
-          MulticastDNS = true;
+  systemd = {
+    network = {
+      networks = {
+        "wlp8s0" = {
+          name = "wlp8s0";
+          DHCP = "ipv4";
+          networkConfig = {
+            MulticastDNS = true;
+          };
         };
       };
     };

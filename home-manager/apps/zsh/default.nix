@@ -9,7 +9,7 @@
     history.size = 10000;
 
     initContent = ''
-      source "/home/cameron/.dotfiles/home-manager/apps/zsh/.zshrc"
+      source "$HOME/.dotfiles/home-manager/apps/zsh/custom.zsh"
     '';
   };
 }

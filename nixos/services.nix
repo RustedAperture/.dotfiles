@@ -60,11 +60,6 @@
 
     resolved.enable = true;
 
-    scx = {
-      enable = true;
-      scheduler = "scx_rusty";
-    };
-
     udev.packages = [pkgs.gnome-settings-daemon];
 
     xserver = {

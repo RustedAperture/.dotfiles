@@ -6,6 +6,11 @@
   dconf = {
     enable = true;
     settings = {
+      "org/gnome/desktop/remote-desktop/rdp" = {
+        screen-share-mode = "extend";
+        cursor-mode = "embedded";
+      };
+
       "org/gnome/shell" = {
         disable-user-extensions = false;
 
@@ -79,7 +84,11 @@
       };
 
       "org/gnome/desktop/session" = {
-        idle-delay = lib.hm.gvariant.mkUint32 0;
+        idle-delay = lib.hm.gvariant.mkUint32 900;
+      };
+
+      "org/gnome/settings-daemon/plugins/power" = {
+        sleep-inactive-ac-type = "nothing";
       };
 
       "org/gnome/shell/extensions/gdeej" = {
@@ -129,6 +138,6 @@
   };
 
   home.activation.gdeejSliders = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    ${pkgs.dconf}/bin/dconf write /org/gnome/shell/extensions/gdeej/sliders "[{'target': <uint16 0>, 'customApp': <\"\">, 'inverted': <true>, 'min': <uint16 0>, 'max': <uint16 1024>}, {'target': <uint16 4>, 'customApp': <\"Firefox\">, 'inverted': <true>, 'min': <uint16 0>, 'max': <uint16 1024>}, {'target': <uint16 4>, 'customApp': <\"Tidal\">, 'inverted': <true>, 'min': <uint16 0>, 'max': <uint16 1024>}, {'target': <uint16 3>, 'customApp': <\"Discord\">, 'inverted': <true>, 'min': <uint16 0>, 'max': <uint16 1024>}, {'target': <uint16 1>, 'customApp': <\"\">, 'inverted': <true>, 'min': <uint16 0>, 'max': <uint16 1024>}]"
+    ${pkgs.dconf}/bin/dconf write /org/gnome/shell/extensions/gdeej/sliders "[{'target': <uint16 0>, 'customApp': <\"\">, 'inverted': <true>, 'min': <uint16 0>, 'max': <uint16 1024>}, {'target': <uint16 4>, 'customApp': <\"Firefox\">, 'inverted': <true>, 'min': <uint16 0>, 'max': <uint16 1024>}, {'target': <uint16 4>, 'customApp': <\"Chromium\">, 'inverted': <true>, 'min': <uint16 0>, 'max': <uint16 1024>}, {'target': <uint16 3>, 'customApp': <\"Discord\">, 'inverted': <true>, 'min': <uint16 0>, 'max': <uint16 1024>}, {'target': <uint16 1>, 'customApp': <\"\">, 'inverted': <true>, 'min': <uint16 0>, 'max': <uint16 1024>}]"
   '';
 }
