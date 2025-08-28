@@ -30,6 +30,11 @@
         ];
       };
 
+      "com/usebottles/bottles" = {
+        show-sandbox-warning = false;
+        steam-proton-support = true;
+      };
+
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
         cursor-theme = "Qogir-Dark";
@@ -129,6 +134,53 @@
         extension-place = "center";
         left-padding = 0;
         right-padding = 0;
+      };
+
+      "org/gnome/desktop/app-folders" = {
+        folder-children = [
+          "System Tools"
+          "Programming"
+          "Games"
+        ];
+      };
+
+      "org/gnome/desktop/app-folders/folders/System Tools" = {
+        apps = [
+          "ca.desrt.dconf-editor.desktop"
+          "org.gnome.Extensions.desktop"
+          "org.gnome.Settings.desktop"
+          "gparted.desktop"
+          "page.tesk.Refine.desktop"
+          "btop.desktop"
+          "xterm.desktop"
+          "cups.desktop"
+          "io.missioncenter.MissionCenter.desktop"
+          "kitty.desktop"
+          "nixos-manual.desktop"
+          "org.gnome.FileRoller.desktop"
+        ];
+        name = "System Tools";
+        translate = false;
+      };
+
+      "org/gnome/desktop/app-folders/folders/Programming" = {
+        apps = [
+          "idea-ultimate.desktop"
+          "org.godotengine.Godot4.4.desktop"
+          "code.desktop"
+        ];
+        name = "Programming";
+        translate = false;
+      };
+
+      "org/gnome/desktop/app-folders/folders/Games" = {
+        apps = [
+          "com.heroicgameslauncher.hgl.desktop"
+          "net.lutris.Lutris.desktop"
+          "io.github.radiolamp.mangojuice.desktop"
+        ];
+        name = "Games";
+        translate = false;
       };
     };
   };
