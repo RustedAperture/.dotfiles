@@ -5,6 +5,8 @@
       binfmt = true;
     };
 
+    gamemode.enable = true;
+
     gamescope = {
       enable = true;
       capSysNice = true;
@@ -12,6 +14,11 @@
 
     git = {
       enable = true;
+    };
+
+    kdeconnect = {
+      enable = true;
+      package = pkgs.gnomeExtensions.gsconnect;
     };
 
     nix-ld = {

@@ -14,9 +14,6 @@
       ntfs3g
       steamcmd
       mangohud
-      fwupd
-      docker-compose
-      podman-compose
       gnomeExtensions.appindicator
       gnomeExtensions.just-perfection
       gnomeExtensions.tiling-shell
@@ -30,6 +27,10 @@
       wl-clipboard
       jq
       vulkan-tools
+      protontricks
+      bottles-unwrapped
+      wineWowPackages.stable
+      mangojuice
     ];
   };
 }

@@ -47,7 +47,6 @@
       # Development Tools & Languages
       alejandra
       dart-sass
-      docker-compose
       nixd
       nodejs_20
       zulu11
@@ -134,4 +133,6 @@
     platformTheme.name = "adwaita";
     style.name = "adwaita-dark";
   };
+
+  xdg.configFile."autostart/kitty.desktop".source = "${pkgs.kitty}/share/applications/kitty.desktop";
 }

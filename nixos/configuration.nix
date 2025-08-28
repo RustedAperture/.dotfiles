@@ -48,6 +48,7 @@ in {
       sysctl = {
         "net.core.rmem_max" = 26214400;
         "net.core.wmem_max" = 26214400;
+        "kernel.split_lock_mitigate" = 0;
       };
     };
 
@@ -135,6 +136,7 @@ in {
         "tty"
         "dialout"
         "uucp"
+        "docker"
       ];
       shell = pkgs.zsh;
     };
@@ -155,11 +157,7 @@ in {
 
   virtualisation = {
     docker = {
-      enable = false;
-      rootless = {
-        enable = true;
-        setSocketVariable = true;
-      };
+      enable = true;
     };
   };
 

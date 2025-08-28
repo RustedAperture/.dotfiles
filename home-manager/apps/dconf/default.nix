@@ -6,11 +6,6 @@
   dconf = {
     enable = true;
     settings = {
-      "org/gnome/desktop/remote-desktop/rdp" = {
-        screen-share-mode = "extend";
-        cursor-mode = "embedded";
-      };
-
       "org/gnome/shell" = {
         disable-user-extensions = false;
 
@@ -24,6 +19,7 @@
           gnomeExtensions.vitals.extensionUuid
           gnomeExtensions.gdeej.extensionUuid
           gnomeExtensions.mpris-label.extensionUuid
+          gnomeExtensions.gsconnect.extensionUuid
         ];
 
         favorite-apps = [

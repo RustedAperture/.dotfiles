@@ -3,6 +3,8 @@
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
 
+    fwupd.enable = true;
+
     gnome = {
       core-apps.enable = false;
       core-developer-tools.enable = false;
