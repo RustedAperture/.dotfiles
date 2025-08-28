@@ -12,7 +12,6 @@
       dmidecode
       base16-schemes
       ntfs3g
-      steamcmd
       mangohud
       gnomeExtensions.appindicator
       gnomeExtensions.just-perfection
@@ -26,8 +25,6 @@
       socat
       wl-clipboard
       jq
-      vulkan-tools
-      protontricks
       bottles-unwrapped
       wineWowPackages.stable
       mangojuice

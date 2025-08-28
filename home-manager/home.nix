@@ -55,10 +55,6 @@
       godot
       jetbrains.idea-ultimate
       obsidian
-      podman-desktop
-
-      # Web Browsers
-      chromium
 
       # Communication
       discord
@@ -66,7 +62,6 @@
       # Gaming
       heroic
       lutris
-      protonup-qt
 
       # Creative & 3D Printing
       orca-slicer
