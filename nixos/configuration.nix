@@ -59,8 +59,6 @@ in {
     hostName = "nixos";
     domain = "local";
     networkmanager.enable = true;
-    useDHCP = false;
-    useNetworkd = true;
     firewall = {
       enable = true;
       allowedTCPPorts = [
@@ -68,20 +66,6 @@ in {
       allowedUDPPorts = [
         45588
       ];
-    };
-  };
-
-  systemd = {
-    network = {
-      networks = {
-        "wlp8s0" = {
-          name = "wlp8s0";
-          DHCP = "ipv4";
-          networkConfig = {
-            MulticastDNS = true;
-          };
-        };
-      };
     };
   };
 
@@ -107,14 +91,6 @@ in {
     tmpfiles.rules = [
       "L+ /run/gdm/.config/monitors.xml - - - - ${monitorsConfig}"
     ];
-
-    services.flatpak-repo = {
-      wantedBy = ["multi-user.target"];
-      path = [pkgs.flatpak];
-      script = ''
-        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-      '';
-    };
   };
 
   sops = {
@@ -154,7 +130,6 @@ in {
 
   chaotic.mesa-git.enable = true;
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   fonts = {
