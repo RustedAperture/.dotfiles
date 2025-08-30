@@ -32,6 +32,8 @@
       home-manager
       mission-center
       openssl
+      winbox4
+      iwgtk
 
       # File Management & Screenshots
       dconf-editor

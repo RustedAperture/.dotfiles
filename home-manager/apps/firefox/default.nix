@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-bin;
+    package = pkgs.firefox-beta;
     profiles = {
       default = {
         id = 0;

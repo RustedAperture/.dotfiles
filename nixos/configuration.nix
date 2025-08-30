@@ -5,8 +5,6 @@
   ...
 }: let
   berkeley-mono = pkgs.callPackage ../pkgs/berkeley-mono {inherit pkgs;};
-  monitorsXmlContent = builtins.readFile ./monitors.xml;
-  monitorsConfig = pkgs.writeText "gdm_monitors.xml" monitorsXmlContent;
 in {
   nix = {
     gc = {
@@ -36,6 +34,7 @@ in {
     ./security.nix
     ./programs.nix
     ./environment.nix
+    ./systemd.nix
   ];
 
   boot = {
@@ -48,7 +47,6 @@ in {
       sysctl = {
         "net.core.rmem_max" = 26214400;
         "net.core.wmem_max" = 26214400;
-        "kernel.split_lock_mitigate" = 0;
       };
     };
 
@@ -58,14 +56,30 @@ in {
   networking = {
     hostName = "nixos";
     domain = "local";
-    networkmanager.enable = true;
+
+    networkmanager.enable = false;
+    useNetworkd = false;
+    useDHCP = false;
+    dhcpcd.enable = false;
+
     firewall = {
       enable = true;
-      allowedTCPPorts = [
-      ];
       allowedUDPPorts = [
         45588
       ];
+    };
+
+    wireless.iwd = {
+      enable = true;
+      settings = {
+        Settings = {
+          AutoConnect = true;
+          AlwaysRandomizeAddress = false;
+        };
+        General = {
+          EnableNetworkConfiguration = true;
+        };
+      };
     };
   };
 
@@ -87,12 +101,6 @@ in {
     };
   };
 
-  systemd = {
-    tmpfiles.rules = [
-      "L+ /run/gdm/.config/monitors.xml - - - - ${monitorsConfig}"
-    ];
-  };
-
   sops = {
     defaultSopsFile = "/home/cameron/.dotfiles/secrets/secrets.yaml";
     defaultSopsFormat = "yaml";
@@ -106,6 +114,16 @@ in {
       "cameron/passwd" = {
         neededForUsers = true;
       };
+      "wifi/ssid" = {
+        owner = "root";
+        group = "root";
+        mode = "0400";
+      };
+      "wifi/passphrase" = {
+        owner = "root";
+        group = "root";
+        mode = "0400";
+      };
     };
   };
 
@@ -116,13 +134,12 @@ in {
       description = "Cameron";
       hashedPasswordFile = config.sops.secrets."cameron/passwd".path;
       extraGroups = [
-        "networkmanager"
+        "network"
         "wheel"
         "docker"
         "tty"
         "dialout"
         "uucp"
-        "docker"
       ];
       shell = pkgs.zsh;
     };

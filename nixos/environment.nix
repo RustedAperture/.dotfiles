@@ -5,6 +5,7 @@
     gnome.excludePackages = with pkgs; [gnome-tour gnome-user-docs];
 
     systemPackages = with pkgs; [
+      gawk
       wget
       age
       sops
