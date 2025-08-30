@@ -12,6 +12,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
   outputs = inputs @ {
@@ -19,6 +21,7 @@
     chaotic,
     home-manager,
     sops-nix,
+    nix-flatpak,
     ...
   }: let
     system = "x86_64-linux";
@@ -28,6 +31,7 @@
 
       modules = [
         home-manager.nixosModules.home-manager
+
         sops-nix.nixosModules.sops
 
         {
@@ -44,11 +48,15 @@
 
           home-manager.sharedModules = [
             sops-nix.homeManagerModules.sops
+            nix-flatpak.homeManagerModules.nix-flatpak
           ];
         }
 
-        ./nixos/configuration.nix
         chaotic.nixosModules.default
+
+        nix-flatpak.nixosModules.nix-flatpak
+
+        ./nixos/configuration.nix
       ];
 
       specialArgs = {

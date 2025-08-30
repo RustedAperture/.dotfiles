@@ -9,6 +9,7 @@
     ./apps/zsh
     ./apps/vscode
     ./apps/dconf
+    ./apps/xdg
   ];
 
   home = {
@@ -74,6 +75,13 @@
     ];
   };
 
+  services.flatpak = {
+    update.onActivation = true;
+    packages = [
+      "com.bambulab.BambuStudio"
+    ];
+  };
+
   sops = {
     age.keyFile = "/home/cameron/.config/sops/age/keys.txt";
 
@@ -128,6 +136,4 @@
     platformTheme.name = "adwaita";
     style.name = "adwaita-dark";
   };
-
-  xdg.configFile."autostart/kitty.desktop".source = "${pkgs.kitty}/share/applications/kitty.desktop";
 }

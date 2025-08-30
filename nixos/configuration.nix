@@ -52,7 +52,7 @@ in {
       };
     };
 
-    kernelPackages = pkgs.linuxPackages_cachyos.cachyOverride {mArch = "GENERIC_V3";};
+    kernelPackages = pkgs.linuxPackages_cachyos;
   };
 
   networking = {
@@ -103,9 +103,19 @@ in {
     };
   };
 
-  systemd.tmpfiles.rules = [
-    "L+ /run/gdm/.config/monitors.xml - - - - ${monitorsConfig}"
-  ];
+  systemd = {
+    tmpfiles.rules = [
+      "L+ /run/gdm/.config/monitors.xml - - - - ${monitorsConfig}"
+    ];
+
+    services.flatpak-repo = {
+      wantedBy = ["multi-user.target"];
+      path = [pkgs.flatpak];
+      script = ''
+        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+      '';
+    };
+  };
 
   sops = {
     defaultSopsFile = "/home/cameron/.dotfiles/secrets/secrets.yaml";
