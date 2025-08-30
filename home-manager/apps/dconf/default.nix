@@ -24,7 +24,7 @@
 
         favorite-apps = [
           "org.gnome.Nautilus.desktop"
-          "firefox.desktop"
+          "firefox-beta.desktop"
           "discord.desktop"
           "steam.desktop"
         ];
