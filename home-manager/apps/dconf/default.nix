@@ -106,7 +106,6 @@
         hot-sensors = [
           "_memory_usage_"
           "_processor_usage_"
-          "_network_wifi_link quality_"
         ];
         icon-style = 1;
         include-static-info = false;

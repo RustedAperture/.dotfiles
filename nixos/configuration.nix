@@ -57,30 +57,15 @@ in {
     hostName = "nixos";
     domain = "local";
 
-    networkmanager.enable = false;
-    useNetworkd = false;
-    useDHCP = false;
-    dhcpcd.enable = false;
-    enableIPv6 = false;
+    networkmanager = {
+      enable = true;
+    };
 
     firewall = {
       enable = true;
       allowedUDPPorts = [
         45588
       ];
-    };
-
-    wireless.iwd = {
-      enable = true;
-      settings = {
-        Settings = {
-          AutoConnect = true;
-          AlwaysRandomizeAddress = false;
-        };
-        General = {
-          EnableNetworkConfiguration = true;
-        };
-      };
     };
   };
 
@@ -115,16 +100,6 @@ in {
       "cameron/passwd" = {
         neededForUsers = true;
       };
-      "wifi/ssid" = {
-        owner = "root";
-        group = "root";
-        mode = "0400";
-      };
-      "wifi/passphrase" = {
-        owner = "root";
-        group = "root";
-        mode = "0400";
-      };
     };
   };
 
@@ -135,7 +110,7 @@ in {
       description = "Cameron";
       hashedPasswordFile = config.sops.secrets."cameron/passwd".path;
       extraGroups = [
-        "network"
+        "networkmanager"
         "wheel"
         "docker"
         "tty"

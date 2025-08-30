@@ -64,15 +64,6 @@
 
     pulseaudio.enable = false;
 
-    resolved = {
-      enable = true;
-      dnssec = "allow-downgrade";
-      fallbackDns = [
-        "1.1.1.1"
-        "1.0.0.1"
-      ];
-    };
-
     udev.packages = [pkgs.gnome-settings-daemon];
 
     xserver = {
