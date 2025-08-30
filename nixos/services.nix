@@ -64,6 +64,14 @@
 
     pulseaudio.enable = false;
 
+    resolved = {
+      enable = true;
+      extraConfig = ''
+        DNS=1.1.1.1 8.8.8.8
+        Domains=~.
+      '';
+    };
+
     udev.packages = [pkgs.gnome-settings-daemon];
 
     xserver = {
