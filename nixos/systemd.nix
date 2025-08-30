@@ -11,28 +11,6 @@ in {
       "L+ /run/gdm/.config/monitors.xml - - - - ${monitorsConfig}"
     ];
 
-    user.services.iwgtk = {
-      description = "iwgtk WiFi manager";
-      wantedBy = ["graphical-session.target"];
-      after = ["graphical-session.target" "iwd.service"];
-      wants = ["iwd.service"];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.iwgtk}/bin/iwgtk -i";
-        Restart = "always";
-        RestartSec = "3s";
-        StartLimitBurst = 5;
-        StartLimitIntervalSec = 30;
-        # Environment variables for proper display
-        Environment = [
-          "DISPLAY=:0"
-          "WAYLAND_DISPLAY=wayland-0"
-        ];
-        # Don't restart too aggressively
-        RestartPreventExitStatus = "0";
-      };
-    };
-
     services.iwd-wifi-setup = {
       description = "Setup WiFi connection with iwd";
       wantedBy = ["multi-user.target"];
