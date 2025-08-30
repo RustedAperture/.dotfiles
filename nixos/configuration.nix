@@ -61,6 +61,7 @@ in {
     useNetworkd = false;
     useDHCP = false;
     dhcpcd.enable = false;
+    enableIPv6 = false;
 
     firewall = {
       enable = true;

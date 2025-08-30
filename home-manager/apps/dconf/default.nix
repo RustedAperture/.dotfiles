@@ -103,7 +103,11 @@
         alphabetize = true;
         fixed-widths = true;
         hide-icons = false;
-        hot-sensors = ["_memory_usage_" "_processor_usage_"];
+        hot-sensors = [
+          "_memory_usage_"
+          "_processor_usage_"
+          "_network_wifi_link quality_"
+        ];
         icon-style = 1;
         include-static-info = false;
         menu-centered = false;
