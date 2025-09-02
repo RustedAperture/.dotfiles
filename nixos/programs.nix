@@ -40,12 +40,12 @@
           "-tenfoot"
         ];
         args = [
+          "-r 120"
+          "--expose-wayland"
           "--adaptive-sync"
           "--hdr-enabled"
           "--mangoapp"
           "--rt"
-          "-e"
-          "--steam"
         ];
       };
     };

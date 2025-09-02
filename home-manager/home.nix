@@ -52,6 +52,7 @@
       nixd
       nodejs_20
       zulu11
+      postman
 
       # IDEs & Editors
       godot
@@ -64,6 +65,7 @@
       # Gaming
       heroic
       lutris
+      protonup-qt
 
       # Creative & 3D Printing
       orca-slicer

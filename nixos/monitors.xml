@@ -14,10 +14,195 @@
           <serial>HCSX300724</serial>
         </monitorspec>
         <mode>
+          <width>2560</width>
+          <height>1440</height>
+          <rate>239.970</rate>
+        </mode>
+      </monitor>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-1</connector>
+          <vendor>GSM</vendor>
+          <product>LG TV SSCR2</product>
+          <serial>0x01010101</serial>
+        </monitorspec>
+        <mode>
+          <width>2560</width>
+          <height>1440</height>
+          <rate>119.998</rate>
+        </mode>
+        <colormode>bt2100</colormode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
+    <layoutmode>logical</layoutmode>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DP-1</connector>
+          <vendor>SAM</vendor>
+          <product>Odyssey G93SC</product>
+          <serial>HCSX300724</serial>
+        </monitorspec>
+        <mode>
           <width>5120</width>
           <height>1440</height>
-          <rate>240</rate>
+          <rate>120.000</rate>
           <ratemode>variable</ratemode>
+        </mode>
+        <colormode>bt2100</colormode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>2023</x>
+      <y>1440</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>Meta-0</connector>
+          <vendor>MetaVendor</vendor>
+          <product>Virtual remote monitor</product>
+          <serial>0x000002</serial>
+        </monitorspec>
+        <mode>
+          <width>1168</width>
+          <height>763</height>
+          <rate>60.000</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
+    <layoutmode>logical</layoutmode>
+    <logicalmonitor>
+      <x>1595</x>
+      <y>1440</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-1</connector>
+          <vendor>HJW</vendor>
+          <product>HDMI TO USB</product>
+          <serial>0x00000001</serial>
+        </monitorspec>
+        <mode>
+          <width>800</width>
+          <height>600</height>
+          <rate>60.317</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DP-1</connector>
+          <vendor>SAM</vendor>
+          <product>Odyssey G93SC</product>
+          <serial>HCSX300724</serial>
+        </monitorspec>
+        <mode>
+          <width>5120</width>
+          <height>1440</height>
+          <rate>120.000</rate>
+          <ratemode>variable</ratemode>
+        </mode>
+        <colormode>bt2100</colormode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
+    <layoutmode>logical</layoutmode>
+    <logicalmonitor>
+      <x>1970</x>
+      <y>1440</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>Meta-0</connector>
+          <vendor>MetaVendor</vendor>
+          <product>Virtual remote monitor</product>
+          <serial>0x000001</serial>
+        </monitorspec>
+        <mode>
+          <width>1168</width>
+          <height>763</height>
+          <rate>60.000</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DP-1</connector>
+          <vendor>SAM</vendor>
+          <product>Odyssey G93SC</product>
+          <serial>HCSX300724</serial>
+        </monitorspec>
+        <mode>
+          <width>5120</width>
+          <height>1440</height>
+          <rate>120.000</rate>
+          <ratemode>variable</ratemode>
+        </mode>
+        <colormode>bt2100</colormode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
+    <layoutmode>logical</layoutmode>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DP-1</connector>
+          <vendor>SAM</vendor>
+          <product>Odyssey G93SC</product>
+          <serial>HCSX300724</serial>
+        </monitorspec>
+        <mode>
+          <width>5120</width>
+          <height>1440</height>
+          <rate>240.000</rate>
+          <ratemode>variable</ratemode>
+        </mode>
+        <colormode>bt2100</colormode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+  <configuration>
+    <layoutmode>physical</layoutmode>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DP-1</connector>
+          <vendor>SAM</vendor>
+          <product>Odyssey G93SC</product>
+          <serial>HCSX300724</serial>
+        </monitorspec>
+        <mode>
+          <width>5120</width>
+          <height>1440</height>
+          <rate>240.000</rate>
         </mode>
       </monitor>
     </logicalmonitor>
@@ -29,6 +214,46 @@
         <serial>0x01010101</serial>
       </monitorspec>
     </disabled>
+  </configuration>
+  <configuration>
+    <layoutmode>physical</layoutmode>
+    <logicalmonitor>
+      <x>5120</x>
+      <y>0</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-A-0</connector>
+          <vendor>GSM</vendor>
+          <product>LG TV SSCR2</product>
+          <serial>0x01010101</serial>
+        </monitorspec>
+        <mode>
+          <width>3840</width>
+          <height>2160</height>
+          <rate>120.000</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>0</x>
+      <y>0</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>DisplayPort-0</connector>
+          <vendor>SAM</vendor>
+          <product>Odyssey G93SC</product>
+          <serial>HCSX300724</serial>
+        </monitorspec>
+        <mode>
+          <width>5120</width>
+          <height>1440</height>
+          <rate>240.000</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
   </configuration>
   <configuration>
     <layoutmode>logical</layoutmode>
@@ -71,22 +296,22 @@
     </logicalmonitor>
   </configuration>
   <configuration>
-    <layoutmode>physical</layoutmode>
+    <layoutmode>logical</layoutmode>
     <logicalmonitor>
-      <x>5120</x>
-      <y>0</y>
+      <x>2158</x>
+      <y>1440</y>
       <scale>1</scale>
       <monitor>
         <monitorspec>
-          <connector>HDMI-A-0</connector>
-          <vendor>GSM</vendor>
-          <product>LG TV SSCR2</product>
-          <serial>0x01010101</serial>
+          <connector>DP-2</connector>
+          <vendor>HJW</vendor>
+          <product>HDMI TO USB</product>
+          <serial>0x00000001</serial>
         </monitorspec>
         <mode>
-          <width>3840</width>
-          <height>2160</height>
-          <rate>120.000</rate>
+          <width>1280</width>
+          <height>720</height>
+          <rate>60.000</rate>
         </mode>
       </monitor>
     </logicalmonitor>
@@ -97,7 +322,7 @@
       <primary>yes</primary>
       <monitor>
         <monitorspec>
-          <connector>DisplayPort-0</connector>
+          <connector>DP-1</connector>
           <vendor>SAM</vendor>
           <product>Odyssey G93SC</product>
           <serial>HCSX300724</serial>
@@ -105,34 +330,24 @@
         <mode>
           <width>5120</width>
           <height>1440</height>
-          <rate>240.000</rate>
+          <rate>120.000</rate>
+          <ratemode>variable</ratemode>
         </mode>
       </monitor>
     </logicalmonitor>
+    <disabled>
+      <monitorspec>
+        <connector>HDMI-1</connector>
+        <vendor>GSM</vendor>
+        <product>LG TV SSCR2</product>
+        <serial>0x01010101</serial>
+      </monitorspec>
+    </disabled>
   </configuration>
   <configuration>
-    <layoutmode>physical</layoutmode>
+    <layoutmode>logical</layoutmode>
     <logicalmonitor>
       <x>0</x>
-      <y>0</y>
-      <scale>1</scale>
-      <monitor>
-        <monitorspec>
-          <connector>HDMI-1</connector>
-          <vendor>GSM</vendor>
-          <product>LG TV SSCR2</product>
-          <serial>0x01010101</serial>
-        </monitorspec>
-        <mode>
-          <width>3840</width>
-          <height>2160</height>
-          <rate>120.000</rate>
-        </mode>
-        <colormode>bt2100</colormode>
-      </monitor>
-    </logicalmonitor>
-    <logicalmonitor>
-      <x>3840</x>
       <y>0</y>
       <scale>1</scale>
       <primary>yes</primary>
@@ -147,8 +362,27 @@
           <width>5120</width>
           <height>1440</height>
           <rate>240.000</rate>
+          <ratemode>variable</ratemode>
         </mode>
         <colormode>bt2100</colormode>
+      </monitor>
+    </logicalmonitor>
+    <logicalmonitor>
+      <x>1915</x>
+      <y>1440</y>
+      <scale>1</scale>
+      <monitor>
+        <monitorspec>
+          <connector>DP-2</connector>
+          <vendor>HJW</vendor>
+          <product>HDMI TO USB</product>
+          <serial>0x00000001</serial>
+        </monitorspec>
+        <mode>
+          <width>1280</width>
+          <height>960</height>
+          <rate>60.000</rate>
+        </mode>
       </monitor>
     </logicalmonitor>
   </configuration>

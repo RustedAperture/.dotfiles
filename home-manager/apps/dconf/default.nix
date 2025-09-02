@@ -171,8 +171,9 @@
           "idea-ultimate.desktop"
           "org.godotengine.Godot4.4.desktop"
           "code.desktop"
+          "postman.desktop"
         ];
-        name = "Programming";
+        name = "Dev Work";
         translate = false;
       };
 
@@ -181,9 +182,14 @@
           "com.heroicgameslauncher.hgl.desktop"
           "net.lutris.Lutris.desktop"
           "io.github.radiolamp.mangojuice.desktop"
+          "protonup-qt.desktop"
         ];
         name = "Games";
         translate = false;
+      };
+
+      "org/gnome/shell/extensions/blur-my-shell/appfolder" = {
+        blur = true;
       };
     };
   };

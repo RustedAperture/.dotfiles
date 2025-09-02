@@ -4,6 +4,12 @@
 
     gnome.excludePackages = with pkgs; [gnome-tour gnome-user-docs];
 
+    sessionVariables = {
+      DXVK_HDR = 1;
+      PROTON_ENABLE_WAYLAND = 1;
+      PROTON_ENABLE_HDR = 1;
+    };
+
     systemPackages = with pkgs; [
       gawk
       wget
