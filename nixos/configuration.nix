@@ -17,6 +17,12 @@ in {
       system-features = ["nixos-test" "benchmark" "big-parallel" "kvm" "gccarch-x86-64-v3"];
       auto-optimise-store = true;
       trusted-users = ["root" "cameron" "@wheel"];
+      extra-substituters = [
+        "https://chaotic-nyx.cachix.org"
+      ];
+      extra-trusted-public-keys = [
+        "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
+      ];
     };
 
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
@@ -37,6 +43,10 @@ in {
       efi.canTouchEfiVariables = true;
     };
 
+    extraModprobeConfig = ''
+      options cfg80211 ieee80211_regdom=CA
+    '';
+
     kernel = {
       sysctl = {
         "net.core.rmem_max" = 26214400;
@@ -44,7 +54,7 @@ in {
       };
     };
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_cachyos;
   };
 
   networking = {

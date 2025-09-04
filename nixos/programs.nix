@@ -31,7 +31,7 @@
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
       extraCompatPackages = [
-        pkgs.proton-ge-bin
+        pkgs.proton-cachyos
       ];
       gamescopeSession = {
         enable = true;
