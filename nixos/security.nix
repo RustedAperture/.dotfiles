@@ -4,6 +4,8 @@
 
     rtkit.enable = true;
 
+    sudo-rs.enable = true;
+
     sudo.extraRules = [
       {
         users = ["cameron"];
