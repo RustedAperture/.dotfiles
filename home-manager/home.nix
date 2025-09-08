@@ -105,14 +105,12 @@
     };
   };
 
-  programs.kitty = {
+  programs.ghostty = {
     enable = true;
-    package = pkgs.kitty;
     settings = {
-      include = "/home/cameron/.dotfiles/assets/base16/base16-monokai-256.conf";
-      background_opacity = 0.8;
-      font_family = "Berkeley Mono";
-      font_size = 12;
+      background-opacity = 0.9;
+      font-family = "Berkeley Mono";
+      theme = "Monokai Pro";
     };
   };
 

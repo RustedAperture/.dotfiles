@@ -123,8 +123,8 @@
 
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
         binding = "<Super>t";
-        command = "kitty";
-        name = "Kitty";
+        command = "ghostty";
+        name = "ghostty";
       };
 
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
@@ -158,7 +158,7 @@
           "xterm.desktop"
           "cups.desktop"
           "io.missioncenter.MissionCenter.desktop"
-          "kitty.desktop"
+          "ghostty.desktop"
           "nixos-manual.desktop"
           "org.gnome.FileRoller.desktop"
         ];
@@ -170,7 +170,7 @@
         apps = [
           "idea-ultimate.desktop"
           "org.godotengine.Godot4.4.desktop"
-          "code.desktop"
+          "codium.desktop"
           "postman.desktop"
         ];
         name = "Dev Work";

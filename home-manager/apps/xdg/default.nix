@@ -14,11 +14,15 @@
     };
 
     configFile = {
-      "autostart/kitty.desktop".source = "${pkgs.kitty}/share/applications/kitty.desktop";
+      "autostart/ghostty.desktop".source = "${pkgs.ghostty}/share/applications/ghostty.desktop";
     };
 
     dataFile = {
       "icons/hicolor/48x48/apps/com.bambulab.BambuStudio.png".source = ../../../assets/icons/bambustudio-logo.png;
+    };
+
+    mimeApps.defaultApplications = {
+      "inode/directory" = "nautilus.desktop";
     };
   };
 }

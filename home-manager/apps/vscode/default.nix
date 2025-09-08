@@ -11,10 +11,10 @@
       sha256 = "sha256-MRFOtadoHlUbyRqm5xYmhuw0LL0qc++gR8g0HWnJJRE=";
     }
     {
-      name = "fluent-icons";
-      publisher = "miguelsolorio";
-      version = "0.0.19";
-      sha256 = "sha256-OfPSh0SapT+YOfi0cz3ep8hEhgCTHpjs1FfmgAyjN58=";
+      name = "csv";
+      publisher = "repreng";
+      version = "1.2.2";
+      sha256 = "sha256-8r19gcDOeixiMrS/dgg89RYrU2c48Hg6/ow4ejPA8mk=";
     }
   ];
 
@@ -43,7 +43,7 @@ in {
           kamadorueda.alejandra
           redhat.vscode-yaml
           signageos.signageos-vscode-sops
-          vscode-icons-team.vscode-icons
+          rust-lang.rust-analyzer
         ]
         ++ marketplace-extensions
         ++ [continue-extension];
@@ -66,7 +66,6 @@ in {
 
         "workbench.colorTheme" = lib.mkForce "Monokai Pro";
         "workbench.iconTheme" = "vscode-icons";
-        "workbench.productIconTheme" = "fluent-icons";
         "yaml.schemas" = {
           "file:///home/cameron/.vscode-oss/extensions/Continue.continue/config-yaml-schema.json" = [
             ".continue/**/*.yaml"

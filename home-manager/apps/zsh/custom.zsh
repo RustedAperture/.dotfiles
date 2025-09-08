@@ -25,6 +25,7 @@ alias tl="task list"
 alias ta="task add"
 alias td="task done"
 
+alias code="codium"
 
 # =============================================================================
 # GIT FUNCTIONS
