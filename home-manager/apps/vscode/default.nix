@@ -49,7 +49,10 @@ in {
         ++ [continue-extension];
 
       userSettings = {
-        "editor.fontFamily" = lib.mkForce "Berkeley Mono";
+        "editor.fontFamily" = lib.mkForce [
+          "Berkeley Mono"
+          "FiraCode Nerd Font Mono"
+        ];
         "editor.fontLigatures" = true;
         "editor.fontSize" = lib.mkForce 16;
         "nix.enableLanguageServer" = true;
