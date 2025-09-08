@@ -131,6 +131,7 @@ in {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
     packages = with pkgs; [
+      nerd-fonts.fira-code
       berkeley-mono
     ];
   };

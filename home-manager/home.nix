@@ -33,6 +33,7 @@
       mission-center
       openssl
       winbox4
+      eza
 
       # File Management & Screenshots
       dconf-editor
@@ -109,7 +110,10 @@
     enable = true;
     settings = {
       background-opacity = 0.9;
-      font-family = "Berkeley Mono";
+      font-family = [
+        "Berkeley Mono"
+        "FiraCode Nerd Font Mono"
+      ];
       theme = "Monokai Pro";
     };
   };

@@ -25,7 +25,10 @@ alias tl="task list"
 alias ta="task add"
 alias td="task done"
 
+# Program Alias
 alias code="codium"
+alias cat="bat"
+alias ls="eza -lT --icons"
 
 # =============================================================================
 # GIT FUNCTIONS
