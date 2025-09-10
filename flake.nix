@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -18,7 +17,6 @@
 
   outputs = inputs @ {
     nixpkgs,
-    chaotic,
     home-manager,
     sops-nix,
     nix-flatpak,
@@ -31,7 +29,6 @@
 
       modules = [
         home-manager.nixosModules.home-manager
-        chaotic.nixosModules.default
         sops-nix.nixosModules.sops
 
         {

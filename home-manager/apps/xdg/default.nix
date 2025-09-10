@@ -14,7 +14,7 @@
     };
 
     configFile = {
-      "autostart/ghostty.desktop".source = "${pkgs.ghostty}/share/applications/ghostty.desktop";
+      "autostart/com.mitchellh.ghostty.desktop".source = "${pkgs.ghostty}/share/applications/com.mitchellh.ghostty.desktop";
     };
 
     dataFile = {

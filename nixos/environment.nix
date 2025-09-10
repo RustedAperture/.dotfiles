@@ -5,7 +5,6 @@
     gnome.excludePackages = with pkgs; [gnome-tour gnome-user-docs];
 
     sessionVariables = {
-      DXVK_HDR = 1;
       PROTON_ENABLE_WAYLAND = 1;
       PROTON_ENABLE_HDR = 1;
     };
@@ -27,7 +26,6 @@
       gnomeExtensions.blur-my-shell
       gnomeExtensions.dash-to-dock
       gnomeExtensions.vitals
-      gnomeExtensions.gdeej
       gnomeExtensions.mpris-label
       socat
       wl-clipboard
@@ -35,6 +33,8 @@
       bottles-unwrapped
       wineWowPackages.stable
       mangojuice
+      pv
+      rsync
     ];
   };
 }

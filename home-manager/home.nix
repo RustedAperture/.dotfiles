@@ -25,17 +25,19 @@
 
     packages = with pkgs; [
       # System Utilities
+      alejandra
       bash
       bat
       btop
+      eza
       fastfetch
       home-manager
       mission-center
       openssl
       winbox4
-      eza
 
       # File Management & Screenshots
+      baobab
       dconf-editor
       dconf2nix
       file-roller
@@ -45,15 +47,15 @@
       # Productivity & Time Management
       gnome-pomodoro
       refine
+      tabiew
       taskwarrior3
 
       # Development Tools & Languages
-      alejandra
       dart-sass
       nixd
       nodejs_20
-      zulu11
       postman
+      zulu11
 
       # IDEs & Editors
       godot
@@ -62,6 +64,7 @@
 
       # Communication
       discord
+      element-desktop
 
       # Gaming
       heroic
@@ -133,6 +136,7 @@
       color_align = {
         mode = "horizontal";
       };
+      pride_month_disable = false;
     };
   };
 

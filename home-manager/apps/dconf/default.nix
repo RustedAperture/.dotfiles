@@ -158,7 +158,7 @@
           "xterm.desktop"
           "cups.desktop"
           "io.missioncenter.MissionCenter.desktop"
-          "ghostty.desktop"
+          "com.mitchellh.ghostty.desktop"
           "nixos-manual.desktop"
           "org.gnome.FileRoller.desktop"
         ];
