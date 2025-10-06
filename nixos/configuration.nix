@@ -52,22 +52,6 @@ in {
     kernelPackages = pkgs.linuxPackages_lqx;
   };
 
-  networking = {
-    hostName = "nixos";
-    domain = "local";
-
-    networkmanager = {
-      enable = true;
-    };
-
-    firewall = {
-      enable = true;
-      allowedUDPPorts = [
-        45588
-      ];
-    };
-  };
-
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -99,6 +83,44 @@ in {
       "cameron/passwd" = {
         neededForUsers = true;
       };
+      "wifi/env" = {};
+    };
+  };
+
+  networking = {
+    hostName = "nixos";
+    domain = "local";
+
+    networkmanager = {
+      enable = true;
+      ensureProfiles = {
+        environmentFiles = [config.sops.secrets."wifi/env".path];
+        profiles."home" = {
+          connection = {
+            id = "home";
+            type = "wifi";
+            autoconnect = true;
+          };
+
+          wifi = {
+            mode = "infrastructure";
+            ssid = "$WIFISSID";
+            bssid = "$WIFIBSSID";
+          };
+
+          wifi-security = {
+            key-mgmt = "sae";
+            psk = "$WIFIPSK";
+          };
+        };
+      };
+    };
+
+    firewall = {
+      enable = true;
+      allowedUDPPorts = [
+        45588
+      ];
     };
   };
 

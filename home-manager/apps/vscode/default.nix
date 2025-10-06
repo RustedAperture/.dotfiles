@@ -30,7 +30,8 @@ in {
           redhat.vscode-yaml
           signageos.signageos-vscode-sops
           rust-lang.rust-analyzer
-          continue.continue
+          github.copilot
+          github.copilot-chat
         ]
         ++ marketplace-extensions;
 
