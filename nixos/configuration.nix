@@ -17,6 +17,7 @@ in {
       system-features = ["nixos-test" "benchmark" "big-parallel" "kvm" "gccarch-x86-64-v3"];
       auto-optimise-store = true;
       trusted-users = ["root" "cameron" "@wheel"];
+      download-buffer-size = 524288000;
     };
 
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
@@ -133,6 +134,15 @@ in {
   virtualisation = {
     docker = {
       enable = true;
+    };
+  };
+
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gnome
+      ];
     };
   };
 

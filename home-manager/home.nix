@@ -75,7 +75,7 @@
       orca-slicer
 
       # Music & Media
-      tidal-hifi
+      obs-studio
 
       # Themes & Appearance
       qogir-icon-theme

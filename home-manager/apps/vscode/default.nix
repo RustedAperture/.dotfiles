@@ -7,8 +7,8 @@
     {
       name = "theme-monokai-pro-vscode";
       publisher = "monokai";
-      version = "2.0.7";
-      sha256 = "sha256-MRFOtadoHlUbyRqm5xYmhuw0LL0qc++gR8g0HWnJJRE=";
+      version = "2.0.8";
+      sha256 = "sha256-2ld3o8x/O+4DHWrfx3Hw8dDl9AX1CUY4MMi/35xRdkw=";
     }
     {
       name = "csv";
@@ -17,20 +17,6 @@
       sha256 = "sha256-8r19gcDOeixiMrS/dgg89RYrU2c48Hg6/ow4ejPA8mk=";
     }
   ];
-
-  continue-extension = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      name = "continue";
-      publisher = "Continue";
-      version = "1.2.2";
-      sha256 = "sha256-xk2maMEa07yFPbLiDGc9N6AbzxjTyfVNy/k7wWSMOHE=";
-      arch = "linux-x64";
-    };
-    nativeBuildInputs = [
-      pkgs.autoPatchelfHook
-    ];
-    buildInputs = [pkgs.stdenv.cc.cc.lib];
-  };
 in {
   programs.vscode = {
     enable = true;
@@ -44,15 +30,12 @@ in {
           redhat.vscode-yaml
           signageos.signageos-vscode-sops
           rust-lang.rust-analyzer
+          continue.continue
         ]
-        ++ marketplace-extensions
-        ++ [continue-extension];
+        ++ marketplace-extensions;
 
       userSettings = {
-        "editor.fontFamily" = lib.mkForce [
-          "Berkeley Mono"
-          "FiraCode Nerd Font Mono"
-        ];
+        "editor.fontFamily" = lib.mkForce "Berkeley Mono, FiraCode Nerd Font Mono";
         "editor.fontLigatures" = true;
         "editor.fontSize" = lib.mkForce 16;
         "nix.enableLanguageServer" = true;

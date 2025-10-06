@@ -29,6 +29,7 @@ alias td="task done"
 alias code="codium"
 alias cat="bat"
 alias ls="eza -lhToa --icons --level=2 --git"
+alias csv="tw"
 
 # =============================================================================
 # GIT FUNCTIONS
