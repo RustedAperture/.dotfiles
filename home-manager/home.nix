@@ -3,7 +3,9 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  additionalJDKs = with pkgs; [temurin-bin-11 temurin-bin-17 jetbrains.jdk];
+in {
   imports = [
     ./apps/firefox
     ./apps/zsh
@@ -19,9 +21,18 @@
 
     sessionVariables = {
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\\\${HOME}/.steam/root/compatibilitytools.d";
-      JAVA_HOME_11 = "${pkgs.zulu11}/lib/openjdk";
       NODE_HOME = "${pkgs.nodejs_20}/lib/node_modules";
     };
+
+    sessionPath = ["$HOME/.jdks"];
+
+    file = builtins.listToAttrs (builtins.map (jdk: {
+        name = ".jdks/${jdk.version}";
+        value = {
+          source = jdk;
+        };
+      })
+      additionalJDKs);
 
     packages = with pkgs; [
       # System Utilities
@@ -55,7 +66,6 @@
       nixd
       nodejs_20
       postman
-      zulu11
 
       # IDEs & Editors
       godot
@@ -106,6 +116,7 @@
         path = "/home/cameron/.config/zipline/token";
         mode = "0400";
       };
+      "openrouter/env" = {};
     };
   };
 

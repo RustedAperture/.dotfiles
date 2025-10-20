@@ -20,7 +20,7 @@
 in {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = pkgs.vscode;
     profiles.default = {
       extensions = with pkgs.vscode-extensions;
         [
@@ -32,6 +32,7 @@ in {
           rust-lang.rust-analyzer
           github.copilot
           github.copilot-chat
+          esbenp.prettier-vscode
         ]
         ++ marketplace-extensions;
 
@@ -39,6 +40,7 @@ in {
         "editor.fontFamily" = lib.mkForce "Berkeley Mono, FiraCode Nerd Font Mono";
         "editor.fontLigatures" = true;
         "editor.fontSize" = lib.mkForce 16;
+        "editor.formatOnSave" = true;
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nixd";
         "nix.serverSettings" = {
@@ -57,6 +59,10 @@ in {
           "file:///home/cameron/.vscode-oss/extensions/Continue.continue/config-yaml-schema.json" = [
             ".continue/**/*.yaml"
           ];
+        };
+
+        "[typescriptreact]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
       };
     };
