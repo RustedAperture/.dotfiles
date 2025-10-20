@@ -134,8 +134,12 @@ in {
 
   programs.git = {
     enable = true;
-    userName = "Cameron Varley";
-    userEmail = "cam.avarley@gmail.com";
+    settings = {
+      user = {
+        name = "Cameron Varley";
+        email = "cam.avarley@gmail.com";
+      };
+    };
   };
 
   programs.hyfetch = {
