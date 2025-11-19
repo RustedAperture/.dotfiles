@@ -9,6 +9,7 @@
     history.size = 10000;
 
     initContent = ''
+      . "$HOME/.cargo/env"
       export OPENROUTER_API_KEY=$(cat ${config.sops.secrets."openrouter/env".path})
       source "$HOME/.dotfiles/home-manager/apps/zsh/custom.zsh"
     '';

@@ -27,6 +27,10 @@
           type = "ed25519";
         }
       ];
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+      };
     };
 
     pipewire = {

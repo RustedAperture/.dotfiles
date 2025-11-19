@@ -24,7 +24,7 @@
 
         favorite-apps = [
           "org.gnome.Nautilus.desktop"
-          "firefox-beta.desktop"
+          "firefox.desktop"
           "discord.desktop"
           "steam.desktop"
         ];
@@ -170,7 +170,7 @@
         apps = [
           "idea-ultimate.desktop"
           "org.godotengine.Godot4.4.desktop"
-          "codium.desktop"
+          "code.desktop"
           "postman.desktop"
         ];
         name = "Dev Work";
@@ -183,6 +183,7 @@
           "net.lutris.Lutris.desktop"
           "io.github.radiolamp.mangojuice.desktop"
           "protonup-qt.desktop"
+          "org.prismlauncher.PrismLauncher.desktop"
         ];
         name = "Games";
         translate = false;

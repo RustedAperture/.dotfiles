@@ -45,7 +45,6 @@ in {
       home-manager
       mission-center
       openssl
-      winbox4
 
       # File Management & Screenshots
       baobab
@@ -59,13 +58,11 @@ in {
       gnome-pomodoro
       refine
       tabiew
-      taskwarrior3
 
       # Development Tools & Languages
       dart-sass
       nixd
       nodejs_20
-      postman
 
       # IDEs & Editors
       godot
@@ -80,15 +77,15 @@ in {
       heroic
       lutris
       protonup-qt
-
-      # Creative & 3D Printing
-      orca-slicer
+      prismlauncher
 
       # Music & Media
       obs-studio
 
       # Themes & Appearance
       qogir-icon-theme
+
+      chromium
     ];
   };
 
