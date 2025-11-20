@@ -16,11 +16,6 @@
       enable = true;
     };
 
-    kdeconnect = {
-      enable = true;
-      package = pkgs.gnomeExtensions.gsconnect;
-    };
-
     nix-ld = {
       enable = true;
     };

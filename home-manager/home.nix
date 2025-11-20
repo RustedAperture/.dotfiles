@@ -10,7 +10,6 @@ in {
     ./apps/firefox
     ./apps/zsh
     ./apps/vscode
-    ./apps/dconf
     ./apps/xdg
   ];
 
@@ -50,12 +49,9 @@ in {
       baobab
       dconf-editor
       dconf2nix
-      file-roller
       flameshot
-      nautilus
 
       # Productivity & Time Management
-      gnome-pomodoro
       refine
       tabiew
 

@@ -2,8 +2,6 @@
   environment = {
     shells = with pkgs; [zsh];
 
-    gnome.excludePackages = with pkgs; [gnome-tour gnome-user-docs];
-
     sessionVariables = {
       PROTON_ENABLE_WAYLAND = 1;
       PROTON_ENABLE_HDR = 1;
@@ -19,22 +17,14 @@
       base16-schemes
       ntfs3g
       mangohud
-      gnomeExtensions.appindicator
-      gnomeExtensions.just-perfection
-      gnomeExtensions.tiling-shell
-      gnomeExtensions.wallpaper-slideshow
-      gnomeExtensions.blur-my-shell
-      gnomeExtensions.dash-to-dock
-      gnomeExtensions.vitals
-      gnomeExtensions.mpris-label
       socat
       wl-clipboard
       jq
-      bottles-unwrapped
       wineWowPackages.stable
       mangojuice
       pv
       rsync
+      kdePackages.bluedevil
     ];
   };
 }

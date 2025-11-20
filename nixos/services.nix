@@ -1,14 +1,14 @@
 {pkgs, ...}: {
   services = {
-    desktopManager.gnome.enable = true;
-    displayManager.gdm.enable = true;
+    displayManager.sddm.enable = true;
+    displayManager.sddm.wayland.enable = true;
+    desktopManager.plasma6.enable = true;
 
     flatpak = {
       enable = true;
     };
 
     fwupd.enable = true;
-
     gnome = {
       core-apps.enable = false;
       core-developer-tools.enable = false;
