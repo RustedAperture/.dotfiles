@@ -30,6 +30,7 @@ in {
     ./programs.nix
     ./environment.nix
     ./systemd.nix
+    ./flatpak.nix
   ];
 
   boot = {

@@ -62,7 +62,7 @@ in {
 
       # IDEs & Editors
       godot
-      jetbrains.idea-ultimate
+      jetbrains-toolbox
       obsidian
 
       # Communication
@@ -82,13 +82,7 @@ in {
       qogir-icon-theme
 
       chromium
-    ];
-  };
-
-  services.flatpak = {
-    update.onActivation = true;
-    packages = [
-      "com.bambulab.BambuStudio"
+      anydesk
     ];
   };
 

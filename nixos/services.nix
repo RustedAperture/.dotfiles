@@ -28,7 +28,7 @@
         }
       ];
       settings = {
-        PasswordAuthentication = false;
+        PasswordAuthentication = true;
         KbdInteractiveAuthentication = false;
       };
     };
