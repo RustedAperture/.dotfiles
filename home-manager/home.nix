@@ -59,6 +59,7 @@ in {
       dart-sass
       nixd
       nodejs_20
+      yarn
 
       # IDEs & Editors
       godot
@@ -147,4 +148,6 @@ in {
     platformTheme.name = "adwaita";
     style.name = "adwaita-dark";
   };
+
+  services.kdeconnect.enable = true;
 }

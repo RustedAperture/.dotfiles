@@ -25,6 +25,9 @@
       pv
       rsync
       kdePackages.bluedevil
+      kdePackages.kzones
+      kdePackages.kinfocenter
+      pciutils
     ];
   };
 }

@@ -64,6 +64,7 @@ in {
         "[typescriptreact]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
+        "git.confirmSync" = false;
       };
     };
   };

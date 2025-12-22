@@ -16,6 +16,8 @@
       enable = true;
     };
 
+    kdeconnect.enable = true;
+
     nix-ld = {
       enable = true;
     };
