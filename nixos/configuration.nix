@@ -42,6 +42,7 @@ in {
     extraModprobeConfig = ''
       options cfg80211 ieee80211_regdom=CA
     '';
+    kernelModules = ["cifs"];
 
     kernel = {
       sysctl = {
@@ -50,7 +51,7 @@ in {
       };
     };
 
-    kernelPackages = pkgs.linuxPackages_lqx;
+    kernelPackages = pkgs.linuxPackages_zen;
   };
 
   # Set your time zone.
@@ -85,6 +86,11 @@ in {
         neededForUsers = true;
       };
       "wifi/env" = {};
+
+      "smb" = {
+        path = "/etc/nixos/smb-secrets";
+        mode = "0600";
+      };
     };
   };
 
@@ -181,5 +187,17 @@ in {
     };
   };
 
-  system.stateVersion = "25.05"; # Did you read the comment?
+  security.sudo.extraRules = ''
+    cameron ALL=(root) NOPASSWD: /sbin/mount.cifs, /sbin/umount.cifs
+  '';
+
+  fileSystems."/mnt/towermedia" = {
+    device = "//tower.local/Media";
+    fsType = "cifs";
+    options = let
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
+  };
+
+  system.stateVersion = "25.05";
 }

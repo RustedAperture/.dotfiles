@@ -8,6 +8,8 @@
 
     history.size = 10000;
 
+    dotDir = "${config.xdg.configHome}/zsh";
+
     initContent = ''
       . "$HOME/.cargo/env"
       export OPENROUTER_API_KEY=$(cat ${config.sops.secrets."openrouter/env".path})

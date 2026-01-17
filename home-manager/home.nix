@@ -5,6 +5,7 @@
   ...
 }: let
   additionalJDKs = with pkgs; [temurin-bin-11 temurin-bin-17 jetbrains.jdk];
+  hytale = pkgs.callPackage ../pkgs/hytale {inherit pkgs;};
 in {
   imports = [
     ./apps/firefox
@@ -19,11 +20,11 @@ in {
     stateVersion = "25.05";
 
     sessionVariables = {
-      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\\\${HOME}/.steam/root/compatibilitytools.d";
+      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${config.home.homeDirectory}/.steam/root/compatibilitytools.d";
       NODE_HOME = "${pkgs.nodejs_20}/lib/node_modules";
     };
 
-    sessionPath = ["$HOME/.jdks"];
+    sessionPath = ["${config.home.homeDirectory}/.jdks"];
 
     file = builtins.listToAttrs (builtins.map (jdk: {
         name = ".jdks/${jdk.version}";
@@ -40,6 +41,7 @@ in {
       bat
       btop
       eza
+      flatpak
       fastfetch
       home-manager
       mission-center
@@ -84,6 +86,7 @@ in {
 
       chromium
       anydesk
+      calibre
     ];
   };
 
@@ -149,5 +152,8 @@ in {
     style.name = "adwaita-dark";
   };
 
+  home.activation.installHytale = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ${pkgs.flatpak}/bin/flatpak install --user --noninteractive --assumeyes ${hytale}/share/hytale/hytale-launcher-latest.flatpak || true
+  '';
   services.kdeconnect.enable = true;
 }

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   environment = {
     shells = with pkgs; [zsh];
 
@@ -12,6 +16,7 @@
       wget
       age
       sops
+      cifs-utils
       gparted
       dmidecode
       base16-schemes
@@ -28,6 +33,7 @@
       kdePackages.kzones
       kdePackages.kinfocenter
       pciutils
+      p7zip
     ];
   };
 }

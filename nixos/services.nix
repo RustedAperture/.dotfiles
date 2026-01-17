@@ -70,10 +70,11 @@
 
     resolved = {
       enable = true;
-      extraConfig = ''
-        DNS=1.1.1.1 8.8.8.8
-        Domains=~.
-      '';
+    };
+
+    scx = {
+      enable = true;
+      scheduler = "scx_lavd";
     };
 
     udev = {
