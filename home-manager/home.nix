@@ -77,6 +77,7 @@ in {
       lutris
       protonup-qt
       prismlauncher
+      bs-manager
 
       # Music & Media
       obs-studio
@@ -86,7 +87,7 @@ in {
 
       chromium
       anydesk
-      calibre
+      #calibre
     ];
   };
 

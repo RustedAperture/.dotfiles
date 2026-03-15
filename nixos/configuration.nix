@@ -124,7 +124,7 @@ in {
     };
 
     firewall = {
-      enable = true;
+      enable = false;
       allowedTCPPortRanges = [
         {
           from = 1714;

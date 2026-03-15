@@ -9,6 +9,11 @@
     sessionVariables = {
       PROTON_ENABLE_WAYLAND = 1;
       PROTON_ENABLE_HDR = 1;
+
+      XDG_DATA_DIRS = [
+        "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
+        "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
+      ];
     };
 
     systemPackages = with pkgs; [
@@ -25,7 +30,7 @@
       socat
       wl-clipboard
       jq
-      wineWowPackages.stable
+      wineWow64Packages.stable
       mangojuice
       pv
       rsync
@@ -34,6 +39,15 @@
       kdePackages.kinfocenter
       pciutils
       p7zip
+      deskflow
+      protonvpn-gui
+      wayvr
+      android-tools
+      xrizer
+      kitty
+      monado
+      winbox4
+      pavucontrol
     ];
   };
 }

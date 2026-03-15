@@ -14,6 +14,7 @@
 
     git = {
       enable = true;
+      lfs.enable = true;
     };
 
     kdeconnect.enable = true;
@@ -24,6 +25,15 @@
 
     steam = {
       enable = true;
+      package = pkgs.steam.override {
+        extraProfile = ''
+          # Fixes timezones on VRChat
+          unset TZ
+          # Allows Monado to be used
+          export PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1
+          export PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/wivrn/comp_ipc
+        '';
+      };
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;

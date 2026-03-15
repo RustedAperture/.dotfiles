@@ -18,15 +18,15 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
   };
 
   outputs = inputs @ {
     nixpkgs,
     home-manager,
     sops-nix,
-    nix-flatpak,
     plasma-manager,
+    nixpkgs-xr,
     ...
   }: let
     system = "x86_64-linux";
@@ -52,14 +52,13 @@
 
           home-manager.sharedModules = [
             sops-nix.homeManagerModules.sops
-            nix-flatpak.homeManagerModules.nix-flatpak
             plasma-manager.homeManagerModules.plasma-manager
           ];
         }
 
-        nix-flatpak.nixosModules.nix-flatpak
-
         ./nixos/configuration.nix
+
+        nixpkgs-xr.nixosModules.nixpkgs-xr
       ];
 
       specialArgs = {
