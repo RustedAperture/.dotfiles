@@ -51,7 +51,7 @@ in {
       };
     };
 
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_testing;
   };
 
   # Set your time zone.

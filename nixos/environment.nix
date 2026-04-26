@@ -25,7 +25,6 @@
       gparted
       dmidecode
       base16-schemes
-      ntfs3g
       mangohud
       socat
       wl-clipboard
@@ -40,14 +39,15 @@
       pciutils
       p7zip
       deskflow
-      protonvpn-gui
+      proton-vpn
       wayvr
       android-tools
       xrizer
       kitty
-      monado
+      #monado
       winbox4
       pavucontrol
+      btrfs-progs
     ];
   };
 }

@@ -74,7 +74,6 @@ in {
 
       # Gaming
       heroic
-      lutris
       protonup-qt
       prismlauncher
       bs-manager
@@ -88,6 +87,7 @@ in {
       chromium
       anydesk
       #calibre
+      motrix-next
     ];
   };
 
