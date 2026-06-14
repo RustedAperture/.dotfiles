@@ -60,12 +60,11 @@ in {
       # Development Tools & Languages
       dart-sass
       nixd
-      nodejs_20
+      #nodejs_24
       yarn
 
       # IDEs & Editors
       godot
-      jetbrains-toolbox
       obsidian
 
       # Communication
@@ -88,6 +87,8 @@ in {
       anydesk
       #calibre
       motrix-next
+      protontricks
+      kdePackages.filelight
     ];
   };
 

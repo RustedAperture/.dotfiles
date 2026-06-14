@@ -156,6 +156,7 @@ in {
         "tty"
         "dialout"
         "uucp"
+        "input"
       ];
       shell = pkgs.zsh;
     };
@@ -200,4 +201,9 @@ in {
   };
 
   system.stateVersion = "25.05";
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "nodejs-20.20.2"
+    "nodejs-slim-20.20.2"
+  ];
 }

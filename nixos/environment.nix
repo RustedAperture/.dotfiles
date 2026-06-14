@@ -9,6 +9,8 @@
     sessionVariables = {
       PROTON_ENABLE_WAYLAND = 1;
       PROTON_ENABLE_HDR = 1;
+      PROTON_FSR4_UPGRADE = 1;
+      PROTON_FSR4_RDNA3_UPGRADE = 1;
 
       XDG_DATA_DIRS = [
         "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}"
@@ -48,6 +50,7 @@
       winbox4
       pavucontrol
       btrfs-progs
+      jstest-gtk
     ];
   };
 }

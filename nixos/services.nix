@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   services = {
-    displayManager.sddm.enable = true;
-    displayManager.sddm.wayland.enable = true;
+    displayManager.plasma-login-manager.enable = true;
     desktopManager.plasma6.enable = true;
 
     flatpak = {
@@ -78,7 +77,10 @@
     };
 
     udev = {
-      packages = [pkgs.gnome-settings-daemon];
+      packages = [
+        pkgs.gnome-settings-daemon
+        pkgs.game-devices-udev-rules
+      ];
       extraRules = ''
         ATTRS{name}=="Sony Interactive Entertainment DualSense Wireless Controller Touchpad", ENV{LIBINPUT_IGNORE_DEVICE}="1"
         ATTRS{name}=="DualSense Wireless Controller Touchpad", ENV{LIBINPUT_IGNORE_DEVICE}="1"
@@ -87,6 +89,7 @@
 
     xserver = {
       enable = true;
+      desktopManager.cinnamon.enable = true;
       xkb = {
         layout = "us";
         variant = "";

@@ -8,8 +8,8 @@
     gamemode.enable = true;
 
     gamescope = {
-      enable = true;
-      capSysNice = true;
+      enable = false;
+      capSysNice = false;
     };
 
     git = {
