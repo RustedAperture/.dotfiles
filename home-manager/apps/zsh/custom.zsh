@@ -24,7 +24,6 @@ alias gm="git merge"
 alias cat="bat"
 alias ls="eza -lhToa --icons --level=2 --git"
 alias csv="tw"
-alias ollama="cd ~/tools/enchanted-ollama-openrouter-proxy && ./ollama-proxy \"$OPENROUTER_API_KEY\""
 
 # =============================================================================
 # GIT FUNCTIONS
@@ -198,3 +197,5 @@ zle -N down-line-or-beginning-search
 
 bindkey -M emacs "${terminfo[kcuu1]}" up-line-or-beginning-search
 bindkey -M emacs "${terminfo[kcud1]}" down-line-or-beginning-search
+
+export PATH="$HOME/.local/bin:$PATH"

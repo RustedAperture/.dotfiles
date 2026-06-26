@@ -6,6 +6,7 @@
 }: let
   desiredFlatpaks = [
     "com.bambulab.BambuStudio"
+    "com.orcaslicer.OrcaSlicer"
   ];
   flatpakScript = pkgs.writeScript "flatpak-management" ''
     #!${pkgs.runtimeShell} -e
@@ -37,6 +38,7 @@
 in {
   systemd.services.flatpak-management = {
     description = "Manage Flatpak installations";
+    stopIfChanged = true;
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = "yes";

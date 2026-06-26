@@ -7,8 +7,6 @@
     shells = with pkgs; [zsh];
 
     sessionVariables = {
-      PROTON_ENABLE_WAYLAND = 1;
-      PROTON_ENABLE_HDR = 1;
       PROTON_FSR4_UPGRADE = 1;
       PROTON_FSR4_RDNA3_UPGRADE = 1;
 
@@ -51,6 +49,8 @@
       pavucontrol
       btrfs-progs
       jstest-gtk
+      ollama-rocm
+      lmstudio
     ];
   };
 }
