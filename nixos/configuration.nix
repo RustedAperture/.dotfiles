@@ -35,7 +35,11 @@ in {
 
   boot = {
     loader = {
-      limine.enable = true;
+      systemd-boot = {
+        enable = true;
+        editor = true;
+        memtest86.enable = true;
+      };
       efi.canTouchEfiVariables = true;
     };
 
@@ -51,7 +55,7 @@ in {
       };
     };
 
-    kernelPackages = pkgs.linuxPackages_testing;
+    kernelPackages = pkgs.linuxPackages_hdmi_frl_vrr;
   };
 
   # Set your time zone.
@@ -100,27 +104,6 @@ in {
 
     networkmanager = {
       enable = true;
-      ensureProfiles = {
-        environmentFiles = [config.sops.secrets."wifi/env".path];
-        profiles."home" = {
-          connection = {
-            id = "home";
-            type = "wifi";
-            autoconnect = true;
-          };
-
-          wifi = {
-            mode = "infrastructure";
-            ssid = "$WIFISSID";
-            bssid = "$WIFIBSSID";
-          };
-
-          wifi-security = {
-            key-mgmt = "sae";
-            psk = "$WIFIPSK";
-          };
-        };
-      };
     };
 
     firewall = {
@@ -201,6 +184,8 @@ in {
   };
 
   system.stateVersion = "25.05";
+
+  system.nixos.label = config.boot.kernelPackages.kernel.version;
 
   nixpkgs.config.permittedInsecurePackages = [
     "nodejs-20.20.2"

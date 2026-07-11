@@ -45,12 +45,9 @@
       xrizer
       kitty
       #monado
-      winbox4
       pavucontrol
       btrfs-progs
       jstest-gtk
-      ollama-rocm
-      lmstudio
     ];
   };
 }

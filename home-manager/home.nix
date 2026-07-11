@@ -84,7 +84,7 @@ in {
       qogir-icon-theme
 
       chromium
-      anydesk
+      #anydesk
       #calibre
       motrix-next
       protontricks

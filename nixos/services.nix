@@ -1,18 +1,21 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   services = {
-    displayManager.plasma-login-manager.enable = true;
+    displayManager.cosmic-greeter = {
+      enable = true;
+    };
     desktopManager.plasma6.enable = true;
+
+    libinput.enable = true;
 
     flatpak = {
       enable = true;
     };
 
     fwupd.enable = true;
-    gnome = {
-      core-apps.enable = false;
-      core-developer-tools.enable = false;
-      games.enable = false;
-    };
 
     gvfs.enable = true;
 
@@ -89,7 +92,6 @@
 
     xserver = {
       enable = true;
-      desktopManager.cinnamon.enable = true;
       xkb = {
         layout = "us";
         variant = "";
