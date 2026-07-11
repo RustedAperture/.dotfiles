@@ -2,7 +2,11 @@ final: prev: let
   patchDir = ../patches/hdmi-frl-vrr;
   localVersionSuffix = "-frl-vrr";
   baseKernel = prev.linux_latest.override {
-    modDirVersion = "${prev.linux_latest.version}${localVersionSuffix}";
+    # mainline.nix (which builds linux_latest) hardcodes modDirVersion from
+    # `version` *after* merging override args, so a plain `.override
+    # {modDirVersion = ...}` is silently clobbered. argsOverride is its
+    # documented escape hatch, applied last, so it actually sticks.
+    argsOverride.modDirVersion = "${prev.linux_latest.version}${localVersionSuffix}";
   };
 in {
   linuxPackages_hdmi_frl_vrr = prev.linuxPackagesFor (baseKernel.overrideAttrs (old: {
