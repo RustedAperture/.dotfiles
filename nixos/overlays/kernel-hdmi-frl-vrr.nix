@@ -16,11 +16,13 @@ in {
     # nixpkgs kernels (they assume CachyOS-only prerequisite code); those
     # hunks are stripped out here and replaced by 0003-nixos-frl-fixup.patch,
     # which reimplements the same change against the actual upstream source.
+    #
+    # 0001-fix-amd-color-manager.patch and 0002-fix-dc-plane-cm-build-error.patch
+    # (needed against 7.1.3) were dropped as of 7.1.5: upstream merged the same
+    # AMD color-manager revert, so both now fail as already-applied.
     patches =
       (old.patches or [])
       ++ [
-        "${patchDir}/0001-fix-amd-color-manager.patch"
-        "${patchDir}/0002-fix-dc-plane-cm-build-error.patch"
         "${patchDir}/hdmi_frl_amdnext-nixos.patch"
         "${patchDir}/hdmi_vrr_amdnext.patch"
         "${patchDir}/0003-nixos-frl-fixup.patch"

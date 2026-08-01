@@ -21,7 +21,7 @@ in {
 
     sessionVariables = {
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${config.home.homeDirectory}/.steam/root/compatibilitytools.d";
-      NODE_HOME = "${pkgs.nodejs_20}/lib/node_modules";
+      NODE_HOME = "${pkgs.nodejs_24}/lib/node_modules";
     };
 
     sessionPath = ["${config.home.homeDirectory}/.jdks"];
@@ -46,6 +46,7 @@ in {
       home-manager
       mission-center
       openssl
+      gh
 
       # File Management & Screenshots
       baobab
@@ -60,7 +61,7 @@ in {
       # Development Tools & Languages
       dart-sass
       nixd
-      #nodejs_24
+      nodejs_24
       yarn
 
       # IDEs & Editors
