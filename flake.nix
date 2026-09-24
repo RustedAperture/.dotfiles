@@ -43,10 +43,6 @@
             "nix-command"
             "flakes"
           ];
-
-          nixpkgs.overlays = [
-            (import ./nixos/overlays/kernel-hdmi-frl-vrr.nix)
-          ];
         }
 
         {

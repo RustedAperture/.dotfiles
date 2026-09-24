@@ -67,6 +67,7 @@ in {
       # IDEs & Editors
       godot
       obsidian
+      t3code
 
       # Communication
       discord
