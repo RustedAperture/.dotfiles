@@ -17,8 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-
-    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
   };
 
   outputs = inputs @ {
@@ -26,7 +24,6 @@
     home-manager,
     sops-nix,
     plasma-manager,
-    nixpkgs-xr,
     ...
   }: let
     system = "x86_64-linux";
@@ -57,8 +54,6 @@
         }
 
         ./nixos/configuration.nix
-
-        nixpkgs-xr.nixosModules.nixpkgs-xr
       ];
 
       specialArgs = {

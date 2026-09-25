@@ -40,14 +40,13 @@
       p7zip
       deskflow
       proton-vpn
-      wayvr
+      #wayvr
       android-tools
-      xrizer
+      #xrizer
       kitty
       #monado
       pavucontrol
       btrfs-progs
-      jstest-gtk
     ];
   };
 }

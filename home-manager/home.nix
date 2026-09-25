@@ -88,7 +88,6 @@ in {
       chromium
       #anydesk
       #calibre
-      motrix-next
       protontricks
       kdePackages.filelight
     ];

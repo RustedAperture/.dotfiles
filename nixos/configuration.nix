@@ -55,7 +55,7 @@ in {
       };
     };
 
-    kernelPackages = pkgs.linuxPackages_hdmi_frl_vrr;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   # Set your time zone.
