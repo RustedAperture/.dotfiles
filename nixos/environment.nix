@@ -24,6 +24,7 @@
       cifs-utils
       gparted
       dmidecode
+      iperf3
       base16-schemes
       mangohud
       socat

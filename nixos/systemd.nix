@@ -6,9 +6,18 @@
   monitorsXmlContent = builtins.readFile ./monitors.xml;
 in {
   systemd = {
-    user.services.monado.environment = {
-      STEAMVR_LH_ENABLE = "1";
-      XRT_COMPOSITOR_COMPUTE = "1";
+    network = {
+      enable = true;
+      networks = {
+        "20-ethernet" = {
+          matchConfig.Name = "enp7s0";
+          networkConfig = {
+            DHCP = "yes";
+            IPv6AcceptRA = true;
+          };
+          linkConfig.RequiredForOnline = "routable";
+        };
+      };
     };
 
     tmpfiles.rules = [

@@ -99,5 +99,6 @@
     };
 
     avahi.enable = true;
+
   };
 }

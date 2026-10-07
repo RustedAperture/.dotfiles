@@ -102,9 +102,9 @@ in {
     hostName = "nixos";
     domain = "local";
 
-    networkmanager = {
-      enable = true;
-    };
+    networkmanager.enable = false;
+    useNetworkd = true;
+    useDHCP = false;
 
     firewall = {
       enable = false;
@@ -133,7 +133,6 @@ in {
       description = "Cameron";
       hashedPasswordFile = config.sops.secrets."cameron/passwd".path;
       extraGroups = [
-        "networkmanager"
         "wheel"
         "docker"
         "tty"
