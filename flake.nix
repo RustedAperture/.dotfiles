@@ -20,6 +20,7 @@
   };
 
   outputs = inputs @ {
+    self,
     nixpkgs,
     home-manager,
     sops-nix,
@@ -28,12 +29,18 @@
   }: let
     system = "x86_64-linux";
   in {
+    overlays.default = final: prev: {
+      t3code-nightly = final.callPackage ./pkgs/t3code-nightly {};
+    };
+
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       inherit system;
 
       modules = [
         home-manager.nixosModules.home-manager
         sops-nix.nixosModules.sops
+
+        {nixpkgs.overlays = [self.overlays.default];}
 
         {
           nix.settings.experimental-features = [
@@ -62,7 +69,10 @@
     };
 
     homeConfigurations.cameron = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [self.overlays.default];
+      };
       modules = [
         ./home-manager/home.nix
       ];

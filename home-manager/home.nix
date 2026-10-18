@@ -67,7 +67,7 @@ in {
       # IDEs & Editors
       godot
       obsidian
-      t3code
+      t3code-nightly
 
       # Communication
       discord
@@ -157,6 +157,7 @@ in {
 
   home.activation.installHytale = lib.hm.dag.entryAfter ["writeBoundary"] ''
     ${pkgs.flatpak}/bin/flatpak install --user --noninteractive --assumeyes ${hytale}/share/hytale/hytale-launcher-latest.flatpak || true
+    ${pkgs.flatpak}/bin/flatpak override --user --device=all com.hypixel.HytaleLauncher
   '';
   services.kdeconnect.enable = true;
 }
