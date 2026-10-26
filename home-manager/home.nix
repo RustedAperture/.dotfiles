@@ -46,6 +46,7 @@ in {
       home-manager
       mission-center
       openssl
+      ripgrep
       gh
 
       # File Management & Screenshots

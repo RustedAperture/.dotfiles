@@ -17,6 +17,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    plasmazones = {
+      url = "github:fuddlesworth/PlasmaZones";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -39,6 +44,7 @@
       modules = [
         home-manager.nixosModules.home-manager
         sops-nix.nixosModules.sops
+        inputs.plasmazones.nixosModules.default
 
         {nixpkgs.overlays = [self.overlays.default];}
 

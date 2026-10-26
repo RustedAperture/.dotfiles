@@ -56,6 +56,9 @@ in {
     };
 
     kernelPackages = pkgs.linuxPackages_latest;
+
+    # Use CPU for VM page table updates (graphics + compute); needs resizable BAR
+    kernelParams = ["amdgpu.vm_update_mode=3"];
   };
 
   # Set your time zone.

@@ -5,6 +5,10 @@
       binfmt = true;
     };
 
+    direnv = {
+      enable = true;
+    };
+
     gamemode.enable = true;
 
     gamescope = {
@@ -18,6 +22,11 @@
     };
 
     kdeconnect.enable = true;
+
+    plasmazones = {
+      enable = true;
+      autostart = true;
+    };
 
     nix-ld = {
       enable = true;

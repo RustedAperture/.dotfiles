@@ -199,3 +199,4 @@ bindkey -M emacs "${terminfo[kcuu1]}" up-line-or-beginning-search
 bindkey -M emacs "${terminfo[kcud1]}" down-line-or-beginning-search
 
 export PATH="$HOME/.local/bin:$PATH"
+eval "$(direnv hook zsh)"
