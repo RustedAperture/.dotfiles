@@ -24,7 +24,6 @@ in {
     profiles.default = {
       extensions = with pkgs.vscode-extensions;
         [
-          geequlim.godot-tools
           jnoortheen.nix-ide
           kamadorueda.alejandra
           redhat.vscode-yaml

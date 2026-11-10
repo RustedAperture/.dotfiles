@@ -22,6 +22,12 @@
       url = "github:fuddlesworth/PlasmaZones";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    openlogi = {
+      # The local openlogi-update timer keeps this stable release pin current.
+      url = "github:AprilNEA/OpenLogi/v0.9.0?dir=packaging";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -35,6 +41,14 @@
     system = "x86_64-linux";
   in {
     overlays.default = final: prev: {
+      codex = prev.codex.overrideAttrs (old: {
+        buildInputs = (old.buildInputs or []) ++ [final.aws-lc final.zstd final.sqlite final.oniguruma];
+      });
+      openlogi = final.callPackage ./pkgs/openlogi {
+        upstream = inputs.openlogi.packages.${final.stdenv.hostPlatform.system}.openlogi.overrideAttrs (old: {
+          buildInputs = (old.buildInputs or []) ++ [final.zstd];
+        });
+      };
       t3code-nightly = final.callPackage ./pkgs/t3code-nightly {};
     };
 
@@ -45,8 +59,13 @@
         home-manager.nixosModules.home-manager
         sops-nix.nixosModules.sops
         inputs.plasmazones.nixosModules.default
+        inputs.openlogi.nixosModules.default
 
-        {nixpkgs.overlays = [self.overlays.default];}
+        {
+          nixpkgs.overlays = [self.overlays.default];
+          # The upstream module also manages the OpenLogi agent's autostart.
+          disabledModules = ["programs/openlogi.nix"];
+        }
 
         {
           nix.settings.experimental-features = [

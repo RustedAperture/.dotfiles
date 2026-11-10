@@ -4,7 +4,21 @@
 
 # Nix Commands
 alias update="sudo nixos-rebuild switch --flake /home/cameron/.dotfiles"
-alias upgrade="cd /home/cameron/.dotfiles && nix flake update && sudo nixos-rebuild switch --flake /home/cameron/.dotfiles"
+alias upgrade="nixos-upgrade"
+
+function nixos-upgrade() {
+    setopt localoptions pipefail
+    local previous_system
+    previous_system=$(readlink -f /run/current-system) || return
+
+    cd /home/cameron/.dotfiles &&
+        nix flake update &&
+        sudo nixos-rebuild switch --flake /home/cameron/.dotfiles && {
+            printf '\nPackage version changes:\n'
+            nix store diff-closures "$previous_system" /run/current-system |
+                awk '/→/ && !/∅/'
+        }
+}
 alias nix-clean="sudo nix-collect-garbage -d && nix-collect-garbage -d"
 alias home-clean="home-manager expire-generations -d"
 alias nix-orphans="nix store gc && sudo nix store optimise"
@@ -23,7 +37,6 @@ alias gm="git merge"
 # Program Alias
 alias cat="bat"
 alias ls="eza -lhToa --icons --level=2 --git"
-alias csv="tw"
 
 # =============================================================================
 # GIT FUNCTIONS

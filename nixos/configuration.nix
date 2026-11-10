@@ -164,15 +164,6 @@ in {
     };
   };
 
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gnome
-      ];
-    };
-  };
-
   security.sudo.extraRules = ''
     cameron ALL=(root) NOPASSWD: /sbin/mount.cifs, /sbin/umount.cifs
   '';

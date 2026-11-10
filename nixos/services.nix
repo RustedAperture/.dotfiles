@@ -3,7 +3,14 @@
   pkgs,
   ...
 }: {
+  hardware.sane = {
+    enable = true;
+    extraBackends = [pkgs.sane-airscan];
+  };
+
   services = {
+    orca.enable = false;
+
     displayManager.cosmic-greeter = {
       enable = true;
     };
@@ -18,22 +25,6 @@
     fwupd.enable = true;
 
     gvfs.enable = true;
-
-    ipp-usb.enable = true;
-
-    openssh = {
-      enable = true;
-      hostKeys = [
-        {
-          path = "/etc/ssh/ssh_host_ed25519_key";
-          type = "ed25519";
-        }
-      ];
-      settings = {
-        PasswordAuthentication = true;
-        KbdInteractiveAuthentication = false;
-      };
-    };
 
     pipewire = {
       enable = true;
@@ -74,9 +65,9 @@
       enable = true;
     };
 
-    scx = {
+    scx-loader = {
       enable = false;
-      scheduler = "scx_lavd";
+      config.default_sched = "scx_lavd";
     };
 
     udev = {
@@ -87,11 +78,15 @@
       extraRules = ''
         ATTRS{name}=="Sony Interactive Entertainment DualSense Wireless Controller Touchpad", ENV{LIBINPUT_IGNORE_DEVICE}="1"
         ATTRS{name}=="DualSense Wireless Controller Touchpad", ENV{LIBINPUT_IGNORE_DEVICE}="1"
+        # Vial keyboard configurator access
+        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+        # Sofle Pico (VIA firmware) access for usevia.app
+        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="4a54", ATTRS{idProduct}=="5350", MODE="0660", GROUP="users", TAG+="uaccess"
       '';
     };
 
     xserver = {
-      enable = true;
+      enable = false;
       xkb = {
         layout = "us";
         variant = "";

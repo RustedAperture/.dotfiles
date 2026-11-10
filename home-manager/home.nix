@@ -4,11 +4,11 @@
   lib,
   ...
 }: let
-  additionalJDKs = with pkgs; [temurin-bin-11 temurin-bin-17 jetbrains.jdk];
   hytale = pkgs.callPackage ../pkgs/hytale {inherit pkgs;};
 in {
   imports = [
     ./apps/firefox
+    ./apps/openlogi-update
     ./apps/zsh
     ./apps/vscode
     ./apps/xdg
@@ -21,18 +21,7 @@ in {
 
     sessionVariables = {
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "${config.home.homeDirectory}/.steam/root/compatibilitytools.d";
-      NODE_HOME = "${pkgs.nodejs_24}/lib/node_modules";
     };
-
-    sessionPath = ["${config.home.homeDirectory}/.jdks"];
-
-    file = builtins.listToAttrs (builtins.map (jdk: {
-        name = ".jdks/${jdk.version}";
-        value = {
-          source = jdk;
-        };
-      })
-      additionalJDKs);
 
     packages = with pkgs; [
       # System Utilities
@@ -44,35 +33,22 @@ in {
       flatpak
       fastfetch
       home-manager
-      mission-center
       openssl
       ripgrep
       gh
 
       # File Management & Screenshots
       baobab
-      dconf-editor
-      dconf2nix
-      flameshot
-
-      # Productivity & Time Management
-      refine
-      tabiew
 
       # Development Tools & Languages
-      dart-sass
       nixd
-      nodejs_24
-      yarn
 
       # IDEs & Editors
-      godot
       obsidian
       t3code-nightly
 
       # Communication
       discord
-      element-desktop
 
       # Gaming
       heroic
@@ -80,17 +56,12 @@ in {
       prismlauncher
       bs-manager
 
-      # Music & Media
-      obs-studio
-
       # Themes & Appearance
       qogir-icon-theme
 
-      chromium
       #anydesk
       #calibre
       protontricks
-      kdePackages.filelight
     ];
   };
 
@@ -150,15 +121,8 @@ in {
     };
   };
 
-  qt = {
-    enable = true;
-    platformTheme.name = "adwaita";
-    style.name = "adwaita-dark";
-  };
-
   home.activation.installHytale = lib.hm.dag.entryAfter ["writeBoundary"] ''
     ${pkgs.flatpak}/bin/flatpak install --user --noninteractive --assumeyes ${hytale}/share/hytale/hytale-launcher-latest.flatpak || true
     ${pkgs.flatpak}/bin/flatpak override --user --device=all com.hypixel.HytaleLauncher
   '';
-  services.kdeconnect.enable = true;
 }

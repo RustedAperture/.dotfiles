@@ -3,6 +3,11 @@
     appimage = {
       enable = true;
       binfmt = true;
+      package = pkgs.appimage-run.override {
+        # Electron updaters launch the replacement before the old process exits.
+        buildFHSEnv = args:
+          pkgs.buildFHSEnv (args // {dieWithParent = false;});
+      };
     };
 
     direnv = {
@@ -21,7 +26,7 @@
       lfs.enable = true;
     };
 
-    kdeconnect.enable = true;
+    kde-pim.enable = false;
 
     plasmazones = {
       enable = true;
@@ -30,6 +35,11 @@
 
     nix-ld = {
       enable = true;
+    };
+
+    openlogi = {
+      enable = true;
+      package = pkgs.openlogi;
     };
 
     steam = {
@@ -60,7 +70,6 @@
           "--expose-wayland"
           "--adaptive-sync"
           "--hdr-enabled"
-          "--mangoapp"
           "--rt"
         ];
       };

@@ -4,6 +4,15 @@
   ...
 }: {
   environment = {
+    plasma6.excludePackages = with pkgs.kdePackages; [
+      elisa
+      konsole
+      krdp
+      plasma-keyboard
+      khelpcenter
+      discover
+    ];
+
     shells = with pkgs; [zsh];
 
     sessionVariables = {
@@ -22,29 +31,20 @@
       age
       sops
       cifs-utils
-      gparted
       dmidecode
-      iperf3
       base16-schemes
-      mangohud
-      socat
       wl-clipboard
       jq
       wineWow64Packages.stable
-      mangojuice
       pv
       rsync
       kdePackages.bluedevil
-      kdePackages.kzones
       kdePackages.kinfocenter
       pciutils
       p7zip
       deskflow
-      proton-vpn
       #wayvr
-      android-tools
       #xrizer
-      kitty
       #monado
       pavucontrol
       btrfs-progs
